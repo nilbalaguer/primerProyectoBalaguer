@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+
+    @font-face {
+        font-family: "MinecraftTen";
+        src: url("fonts/MinecraftTen.ttf");
+    }
+
+    font-family: 'Noto Sans', 'Times New Roman';
+}
+
+header {
+    background-color: #262423;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+#logoimageheader {
+    height: 60px;
+    width: 380px;
+}
+
+#centrallinks {
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+}
+
+#divlinkclient {
+    width: 380px;
+    text-align: center;
+}
+
+footer :first-child {
+    background-color: #000000;
+}
+
+footer :nth-child(2) {
+    background-color: #111111;
+}
+
+footer :last-child {
+    background-color: #313131;
+}

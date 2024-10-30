@@ -1,10 +1,12 @@
 <?php
 include_once "controllers/productoController.php";
 include_once "config/parameters.php";
+//Importa el menu i el estilo
+include_once "views/index.php";
 
 if (!isset($_GET['controller'])) {
     echo "No existe en la url Controller";
-    header("Location:".url."#");
+    //header("Location:".url."#");
 } else {
     //Establece el nombre del controlador
     $nombre_controller = $_GET["controller"]."Controller";
@@ -26,3 +28,5 @@ if (!isset($_GET['controller'])) {
         echo "No existe el Controller ".$nombre_controller;
     }
 }
+
+include_once "views/footer.php";
