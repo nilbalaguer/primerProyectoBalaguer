@@ -1,31 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>primerProyectoBalaguer</title>
-</head>
-<body>
-    <h1>primerProyectoBalaguer</h1>
-    <br><br>
-    <form method="get" action="index.php">
-        <label>Calculadora para Multiplicar</label>
-        <br><br>
-        <input type="number" id="valor1" name="valor1">
-        <br><br>
-        <input type="number" id="valor2" name="valor2">
-        <br><br>
-        <input type="submit" value="Calcular">
-    </form>
-    <?php
-        if (isset($_GET['valor1'])) {
-            $valor1 = $_GET['valor1'];
-            $valor2 = $_GET['valor2'];
+<?php
+include_once "controllers/productoController.php";
+include_once "config/parameters.php";
 
-            $resultado = $valor1 * $valor2;
+if (!isset($_GET['controller'])) {
+    echo "No existe en la url Controller";
+    header("Location:".url."#");
+} else {
+    //Establece el nombre del controlador
+    $nombre_controller = $_GET["controller"]."Controller";
+    if (class_exists($nombre_controller)) {
+        //Instancia el controlador
+        $controller = new $nombre_controller();
 
-            echo ("Resultado: ".$resultado);
+        //Comprueba si action existe
+        if(isset($_GET["action"]) && method_exists( $controller, $_GET["action"] )) {
+            $action = $_GET["action"];
+        } else {
+            //Default action esta definido en parameters.php
+            $action = default_action;
         }
-    ?>
-</body>
-</html>
+
+        //ejecuta action en el controlador
+        $controller -> $action();
+    } else {
+        echo "No existe el Controller ".$nombre_controller;
+    }
+}
