@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+
+    @font-face {
+        font-family: "MinecraftTen";
+        src: url("fonts/MinecraftTen.ttf");
+    }
+
+    font-family: 'Noto Sans', 'Times New Roman';
+
+    color: white;
+}
+
+h2 {
+    font-weight: 200;
+    font-size: 24px;
+}
