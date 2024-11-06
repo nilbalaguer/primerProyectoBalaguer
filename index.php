@@ -5,7 +5,7 @@ include_once "config/parameters.php";
 include_once "views/index.php";
 
 if (!isset($_GET['controller'])) {
-    echo "No existe en la url Controller";
+    include_once "views/home.php";
     //header("Location:".url."#");
 } else {
     //Establece el nombre del controlador

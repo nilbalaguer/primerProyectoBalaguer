@@ -1,5 +1,5 @@
 header {
-    background-color: #262423;
+    background-color: var(--background1);
     font-weight: bold;
     display: flex;
     justify-content: space-between;
@@ -39,7 +39,7 @@ header {
 }
 
 #thirddivfooter {
-    background-color: #313131;
+    background-color: var(--background31);
     display: flex;
     justify-content: space-between;
     padding: 2rem;

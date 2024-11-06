@@ -1,12 +1,25 @@
+:root {
+    --background1: #262423;
+    --background2: #171615;
+    --background31: #313131;
+    --backgroundMenu: #3D3938;
+    --subtitulos: #ABA09C;
+    --shadow: #3A3735;
+    --mc-vanilla-green-6: #2A641C;
+    --mc-vanilla-green-4: #52A535;
+    --mc-vanilla-green-5: #3C8527;
+    --hovergreen: #367723;
+}
+
+@font-face {
+    font-family: 'MinecraftTen';
+    src: url('../fonts/MinecraftTen.ttf') format('truetype');
+}
+
 * {
     margin: 0;
 
-    @font-face {
-        font-family: "MinecraftTen";
-        src: url("fonts/MinecraftTen.ttf");
-    }
-
-    font-family: 'Noto Sans', 'Times New Roman';
+    font-family: 'Noto Sans', 'Helvetica', 'Times New Roman';
 
     color: white;
 }
@@ -14,4 +27,31 @@
 h2 {
     font-weight: 200;
     font-size: 24px;
+}
+
+.buttondiscount {
+    background-color: red;
+    font-family: "MinecraftTen", "Noto Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+    color: white;
+    padding: 30px;
+    font-size: 140%
+}
+
+.heading2 {
+    font-family: MinecraftTen;
+    font-size: 3.5rem;
+}
+
+.greenbutton {
+    background-color: #3C8527;
+    box-shadow: inset 0 -15px 0 var(--mc-vanilla-green-6), inset 0 15px 0 var(--mc-vanilla-green-4);
+    font-size: 2rem;
+    font-weight: 800;
+    padding: .9375rem 1.75rem;
+    width: 26rem;
+    height: 5.5rem;
+}
+
+.greenbutton:hover {
+    background-color: var(--hovergreen);
 }
