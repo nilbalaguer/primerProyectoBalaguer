@@ -50,8 +50,15 @@ h2 {
     padding: .9375rem 1.75rem;
     width: 26rem;
     height: 5.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: white;
 }
 
 .greenbutton:hover {
     background-color: var(--hovergreen);
+}
+
+.no-wrap {
+    white-space: nowrap;
 }

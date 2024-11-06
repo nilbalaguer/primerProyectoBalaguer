@@ -15,12 +15,12 @@
             <img id="logoimageheader" src="img/FoodCraft.png" alt="FOODCRAFT">
         </div>
         <div id="centrallinks">
-            <a>INICI</a>
-            <a>LA CARTA</a>
-            <a>COMANDA</a>
+            <a href="/">INICI</a>
+            <a href="?lacarta">LA CARTA</a>
+            <a href="?comanda">COMANDA</a>
         </div>
         <div id="divlinkclient">
-            <a>CLIENT</a>
+            <a href="/?client">CLIENT</a>
         </div>
     </header>
 

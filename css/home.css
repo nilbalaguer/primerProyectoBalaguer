@@ -2,6 +2,7 @@
     width: 100%;
 }
 
+/*Seccio de descomptes*/
 #divDescomptes {
     padding: 50px;
     background-color: var(--background2);
@@ -31,4 +32,75 @@
 #divDescomptes p {
     color: var(--subtitulos);
     font-size: 150%;
+}
+
+
+/*Seccio de Descobreix*/
+#divDescobreix {
+    background-color: var(--background1);
+    margin: 0px;
+    padding: 50px;
+    text-align: center;
+}
+
+#divDescobreix h3 {
+    font-weight: 400;
+    font-size: 160%;
+}
+
+#divDescobreix p {
+    font-size: 150%;
+    color: var(--subtitulos);
+}
+
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mt-5 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.full-height {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*Seccio Horaris*/
+#divHoraris {
+    background-color: var(--background2);
+    text-align: center;
+    padding: 100px 120px 100px 120px;
+}
+
+#divHoraris h2 {
+    text-align: left;
+}
+
+#divHoraris p {
+    font-size: 150%;
+    text-align: left;
+}
+
+#divHoraris h3 {
+    font-family: MinecraftTen, Helvetica;
+}
+
+#divHoraris div div:nth-last-child(1) {
+    background-color: var(--backgroundMenu);
+    margin: 10px 60px;
+    padding: 30px;
+}
+
+#divHoraris div div:nth-last-child(2) {
+    background-color: var(--backgroundMenu);
+    margin: 10px 60px;
+    padding: 30px;
 }

@@ -6,6 +6,11 @@ header {
     padding: 40px;
 }
 
+header a {
+    color: white;
+    text-decoration: none;
+}
+
 #logoimageheader {
     height: 60px;
     width: 380px;
