@@ -1,6 +1,6 @@
 <?php
 
-include_once("models/CamisetaDAO.php");
+include_once("/models/ProductoDAO.php");
 
 class productoController{
     public function index(){
@@ -12,7 +12,7 @@ class productoController{
     public function show() {
         echo"Muestra un producto";
 
-        $producto = new CamisetaDAO();
+        $producto = new ProductoDAO();
         $producto = $producto->getAll();
 
         echo "<table>";
@@ -41,5 +41,9 @@ class productoController{
 
         include_once("views/productos/create.php");
         
+    }
+
+    public function lacarta() {
+        include_once("views/lacarta.php");
     }
 }

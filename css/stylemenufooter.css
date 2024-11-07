@@ -6,6 +6,10 @@ header {
     padding: 40px;
 }
 
+header nav {
+    background-color: var(--background1);
+}
+
 header a {
     color: white;
     text-decoration: none;

@@ -3,41 +3,49 @@
 </div>
 
 <div id="divDescomptes">
-    <div>
-        <button class="buttondiscount">15%!</button>
-    </div>
-    <div>
-        <h2 class="heading2">DESCOMPTES</h2>
-    </div>
-    <div></div>
-
-    <div>
-        <img src="img/burgers/bigcraft.png" alt="Bigcraft">
-        <h3>BigCraft</h3>
-        <p>Ara: 9,35 €</p>
+    <!-- Fila superior con imagen, título y espacio adicional -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <button class="buttondiscount">15%!</button>
+        </div>
+        <div class="col text-center">
+            <h2 class="heading2">DESCOMPTES</h2>
+        </div>
+        <div class="col text-center">
+        </div>
     </div>
 
-    <div>
-        <img src="img/burgers/extremecraftdouble.png" alt="Extreme Craft Double">
-        <h3>Extreme Craft Double</h3>
-        <p>Ara: 11,90 €</p>
+    <!-- Fila de productos con tres columnas -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col text-center">
+            <img src="img/burgers/bigcraft.png" class="img-fluid" alt="Bigcraft">
+            <h3>BigCraft</h3>
+            <p>Ara: 9,35 €</p>
+        </div>
+        <div class="col text-center">
+            <img src="img/burgers/extremecraftdouble.png" class="img-fluid" alt="Extreme Craft Double">
+            <h3>Extreme Craft Double</h3>
+            <p>Ara: 11,90 €</p>
+        </div>
+        <div class="col text-center">
+            <img src="img/burgers/amanida.png" class="img-fluid" alt="Amanida Craft">
+            <h3>Amanida Craft</h3>
+            <p>Ara: 9,35 €</p>
+        </div>
     </div>
 
-    <div>
-        <img src="img/burgers/amanida.png" alt="Amanida Craft">
-        <h3>Amanida Craft</h3>
-        <p>Ara: 9,35€</p>
+    <!-- Fila inferior con botón "Demana Ara" e imagen adicional -->
+    <div class="row mt-4">
+        <div class="col"></div>
+        <div class="col text-center">
+            <a href="?lacarta" class="greenbutton">DEMANA ARA!</a>
+        </div>
+        <div class="col text-center">
+            <button class="buttondiscount">15%!</button>
+        </div>
     </div>
-
-    <div></div>
-    <div>
-        <a href="?lacarta" class="greenbutton">DEMANA ARA!</a>
-    </div>
-    <div>
-        <button class="buttondiscount">15%!</button>
-    </div>
-
 </div>
+
 
 <div id="divDescobreix">
     <div class="row mb-4">
@@ -45,7 +53,8 @@
             <img src="img/coin.png" class="img-fluid" alt="Moneda">
         </div>
         <div class="col text-center">
-            <h2 class="heading2 no-wrap">DESCOBREIX EL NOSTRE MENJAR</h2>
+            <h2 class="heading2 no-wrap d-none d-lg-block">DESCOBREIX EL NOSTRE MENJAR</h2>
+            <h2 class="heading2 d-block d-lg-none">DESCOBREIX EL NOSTRE MENJAR</h2>
         </div>
         <div class="col text-center">
         </div>

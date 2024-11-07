@@ -3,10 +3,10 @@
 include_once("config/dataBase.php");
 include_once("models/Camiseta.php");
 
-class CamisetaDAO{
+class ProductoDAO{
     public static function getAll($order = "id") {
         $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM camisas ORDER BY $order");
+        $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order");
         $stmt->execute();
         $result = $stmt->get_result();
 
