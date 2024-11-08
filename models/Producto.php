@@ -1,14 +1,12 @@
 <?php
 
 abstract class Producto{
-    const TYPE_CAMISETA = "1";
-    const TYPE_PANTALONES = "2";
-    protected $talla;
+    protected $descripcion;
     protected $precio;
     protected $nombre;
 
-    public function __construct($nombre, $talla, $precio) {
-        $this->talla = $talla;
+    public function __construct($nombre, $descripcion, $precio) {
+        $this->descripcion = $descripcion;
         $this->precio = $precio;
         $this->nombre = $nombre;
     }
@@ -20,12 +18,12 @@ abstract class Producto{
         return $this->nombre;
     }
 
-    public function setTalla($talla){
-        $this->talla = $talla;
+    public function setDescripcion($descripcion){
+        $this->descripcion = $descripcion;
     }
 
-    public function getTalla(){
-        return $this->talla;
+    public function getDescripcion(){
+        return $this->descripcion;
     }
 
     public function setPrecio($precio){

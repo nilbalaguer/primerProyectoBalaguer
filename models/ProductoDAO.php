@@ -1,7 +1,7 @@
 <?php
 
 include_once("config/dataBase.php");
-include_once("models/Camiseta.php");
+include_once("models/Comestible.php");
 
 class ProductoDAO{
     public static function getAll($order = "id") {
@@ -13,7 +13,7 @@ class ProductoDAO{
         $productos = [];
         while ($row = $result->fetch_assoc()) {
             // Manually create a Camiseta object
-            $producto = new Camiseta($row['nombre'], $row['talla'], $row['precio']);
+            $producto = new Comestible($row['nombre'], $row['descripcion'], $row['precio']);
             $productos[] = $producto;
         }
 

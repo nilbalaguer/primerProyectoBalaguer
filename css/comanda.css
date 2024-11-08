@@ -1,0 +1,21 @@
+#backgroundcomanda {
+    background-color: var(--background2);
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#formulariocomanda {
+    background-color: var(--background1);
+    padding: 40px;
+}
+
+#demanatbox {
+    background-color: var(--backgroundMenu);
+    padding: 20px;
+}
+
+#divform {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}

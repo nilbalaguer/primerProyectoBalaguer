@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/stylemenufooter.css">
     <link rel="stylesheet" href="/css/styledefaults.css">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/comanda.css">
     <link rel="stylesheet" href="/css/carta.css">
     <title>FOODCRAFT</title>
 </head>
@@ -16,19 +17,21 @@
             <img id="logoimageheader" src="/img/FoodCraft.png" alt="FOODCRAFT">
         </div>
         <div id="centrallinks">
-            <a href="/">INICI</a>
-            <a href="?lacarta">LA CARTA</a>
-            <a href="?comanda">COMANDA</a>
+            <a href="<?=url?>producto/home">INICI</a>
+            <a href="<?=url?>producto/lacarta">LA CARTA</a>
+            <a href="<?=url?>producto/comanda">COMANDA</a>
         </div>
         <div id="divlinkclient">
-            <a href="/?client">CLIENT</a>
+            <a href="<?=url?>producto/client">CLIENT</a>
         </div>
     </header>
 
     <?php
+        /*
         include_once("productos/listado.php");
 
         $vista;
+        */
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

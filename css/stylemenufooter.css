@@ -23,12 +23,14 @@ header a {
 #centrallinks {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     gap: 5rem;
 }
 
 #divlinkclient {
     width: 380px;
     text-align: center;
+    align-items: center;
 }
 
 #firstdivfooter {

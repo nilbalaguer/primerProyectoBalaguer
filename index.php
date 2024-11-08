@@ -5,14 +5,7 @@ include_once "config/parameters.php";
 include_once "views/index.php";
 
 if (!isset($_GET['controller'])) {
-    if (isset($_GET['lacarta'])) {
-        include_once "views/lacarta.php";
-    } elseif (isset($_GET['comanda'])) {
-        include_once "views/comanda.php";
-    } else {
-        include_once "views/home.php";
-    }
-    //header("Location:".url."#");
+    header("Location: " . url . "producto/home");
 } else {
     //Establece el nombre del controlador
     $nombre_controller = $_GET["controller"]."Controller";
