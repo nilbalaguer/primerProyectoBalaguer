@@ -11,32 +11,25 @@
             <a class="mx-2">VEDELLA</a>
         </div>
         <div id="divProductos">
-            <div class="row">
-                <div class="col">
-                    <img src="/img/burgers/bigcraft.png" alt="hamburgesa">
-                    <h3>Tus Muertos</h3>
-                    <div class="d-flex justify-content-around">
-                        <p>14€</p>
-                        <img src="/img/plus.png" alt="plus">
-                    </div>
+            <?php 
+                $controller = new productoController();
+                $productes = $controller->mostrarProductes();
+            ?>
+
+            <?php for ($i=0; $i < count($productes)/3; $i++) {?>
+                <div class="row">
+                    <?php for ($j=0; $j < 3*count($productes); $j++) {?>
+                        <div class="col">
+                            <img class="cartaimages" src="/img/burgers/<?=$productes[$j + $i]->getImagen()?>.png" alt="hamburgesa">
+                            <h3><?=$productes[$j + $i]->getNombre()?></h3>
+                            <div class="d-flex justify-content-around">
+                                <p><?=$productes[$j + $i]->getPrecio()?> €</p>
+                                <a class="plusimage" href="#"><img src="/img/plus.png" alt="Afegir"></a>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
-                <div class="col">
-                    <img src="/img/burgers/bigcraft.png" alt="hamburgesa">
-                    <h3>Tus Muertos</h3>
-                    <div class="d-flex justify-content-around">
-                        <p>14€</p>
-                        <img src="/img/plus.png" alt="plus">
-                    </div>
-                </div>
-                <div class="col">
-                    <img src="/img/burgers/bigcraft.png" alt="hamburgesa">
-                    <h3>Tus Muertos</h3>
-                    <div class="d-flex justify-content-around">
-                        <p>14€</p>
-                        <img src="/img/plus.png" alt="plus">
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>

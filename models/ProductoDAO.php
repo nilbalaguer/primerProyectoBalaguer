@@ -5,20 +5,25 @@ include_once("models/Comestible.php");
 
 class ProductoDAO{
     public static function getAll($order = "id") {
-        $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order");
-        $stmt->execute();
-        $result = $stmt->get_result();
+        try {
+            $con = DataBase::connect();
+            $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order");
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-        $productos = [];
-        while ($row = $result->fetch_assoc()) {
-            // Manually create a Camiseta object
-            $producto = new Comestible($row['nombre'], $row['descripcion'], $row['precio']);
-            $productos[] = $producto;
+            $productos = [];
+            while ($row = $result->fetch_assoc()) {
+                $producto = new Comestible($row['id'], $row['nombre'], $row['descripcion'], $row['precio'], $row['imagen']);
+                $productos[] = $producto;
+            }
+
+            $con->close();
+            return $productos;
+        } catch (\Throwable $th) {
+            echo "<p style='font-size: 200%; font-weight: bold; color: red;'>Els nostres servidors no estan disponibles :(</p><p>Lamentem les molesties</p>";
+            throw $th;
         }
-
-        $con->close();
-        return $productos;
+        
     }
 
     public static function store($producto){

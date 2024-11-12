@@ -72,3 +72,8 @@ label {
 input {
     padding: 15px 35px 15px 35px;
 }
+
+.plusimage {
+    height: 50px;
+    width: 54px;
+}

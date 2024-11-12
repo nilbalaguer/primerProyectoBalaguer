@@ -1,5 +1,6 @@
 <?php
 include_once "controllers/productoController.php";
+include_once "controllers/usuarioController.php";
 include_once "config/parameters.php";
 //Importa el menu i el estilo
 include_once "views/index.php";

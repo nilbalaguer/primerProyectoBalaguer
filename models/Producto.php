@@ -1,14 +1,19 @@
 <?php
 
 abstract class Producto{
+
+    protected $id;
     protected $descripcion;
     protected $precio;
     protected $nombre;
+    protected $imagen;
 
-    public function __construct($nombre, $descripcion, $precio) {
+    public function __construct($id, $nombre, $descripcion, $precio, $imagen) {
+        $this->id = $id;
         $this->descripcion = $descripcion;
         $this->precio = $precio;
         $this->nombre = $nombre;
+        $this->imagen = $imagen;
     }
 
     public function setNombre($nombre){
@@ -32,5 +37,13 @@ abstract class Producto{
 
     public function getPrecio(){
         return $this->precio;
+    }
+
+    public function getImagen() {
+        return $this->imagen;
+    }
+
+    public function getId() {
+        return $this->id;
     }
 }

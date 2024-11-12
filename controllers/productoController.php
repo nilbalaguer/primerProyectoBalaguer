@@ -43,20 +43,24 @@ class productoController{
         
     }
 
+    //Obtindre productes de la base de dades
     public function mostrarProductes() {
         $producto = new ProductoDAO();
         $producto = $producto->getAll();
 
+        /*
         echo "<table>";
         for ($i=0; $i < count($producto); $i++) { 
             echo "<tr>";
             echo "<td style=\"color:black;\">".$producto[$i]->getNombre()."</td>";
             echo "<td style=\"color:black;\">".$producto[$i]->getPrecio()."</td>";
             echo "<td style=\"color:black;\">".$producto[$i]->getDescripcion()."</td>";
+            echo "<td style=\"color:black;\">".$producto[$i]->getImagen()."</td";
             echo "</tr>";
         }
 
         echo "</table>";
+        */
         return $producto;
     }
 

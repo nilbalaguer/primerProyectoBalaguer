@@ -22,7 +22,10 @@
             <a href="<?=url?>producto/comanda">COMANDA</a>
         </div>
         <div id="divlinkclient">
-            <a href="<?=url?>producto/client">CLIENT</a>
+            <a id="maindesplegable" href="#">CLIENT</a>
+            <a href="<?=url?>usuario/iniciaSessio" class="desplegablemenu">Inicia Sessio</a>
+            <a href="<?=url?>usuario/tancaSessio" class="desplegablemenu">Tanca Sessio</a>
+            <a href="<?=url?>usuario/perfil" class="desplegablemenu">Perfil de usuari</a>
         </div>
     </header>
 
