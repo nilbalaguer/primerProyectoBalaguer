@@ -32,7 +32,19 @@
                 <input name="codidescompte" type="text">
             </div>
             <div class="col" id="demanatbox">
-                <p class="row">Extreme</p>
+                <?php
+                    include_once "controllers/productoController.php";
+                    $controllercomanda = new productoController();
+
+                    if (isset($_COOKIE['carro'])) {
+                        foreach ($controllercomanda->veureCarro() as $variable) {
+                            echo $variable;
+                        }
+                    } else {
+                        echo "No has afegit res al carro";
+                    }
+                
+                ?>
             </div>
         </div>
         <div class="text-center">

@@ -41,3 +41,23 @@
     font-size: 160%;
     font-weight: 700;
 }
+
+/*Finestra amb informacio del carrito*/
+#ventana {
+    width: 300px;
+    height: 200px;
+    background-color: #000000;
+    border: 2px solid #333;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: move;
+    padding: 10px;
+}
+
+#ventana-header {
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    cursor: move;
+}

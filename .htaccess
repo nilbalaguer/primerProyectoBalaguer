@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
+    RewriteEngine on
     RewriteCond %{SCRIPT_FILENAME} !-d
     RewriteCond %{SCRIPT_FILENAME} !-f
-    RewriteEngine on
-    RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
+    RewriteRule ^(.*)/(.*)$ index.php?controller=$1&action=$2&%{QUERY_STRING}
 </IfModule>
