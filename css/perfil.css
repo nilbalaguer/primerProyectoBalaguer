@@ -1,0 +1,27 @@
+#gridprofile {
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: auto;
+    text-align: center;
+}
+
+#lateralperfil {
+    color: black;
+    background-color: var(--perfilgray);
+    padding: 20px;
+}
+
+#restoperfil {
+    background-color: var(--mc-vanilla-green-5);
+    padding: 20px;
+}
+
+#nomperfil {
+    font-family: MinecraftTen;
+}
+
+#fotoperfil {
+    height: 250px;
+    width: 250px;
+    border-radius: 100%;
+}

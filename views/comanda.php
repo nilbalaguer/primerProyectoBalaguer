@@ -37,9 +37,8 @@
                     $controllercomanda = new productoController();
 
                     if (isset($_COOKIE['carro'])) {
-                        foreach ($controllercomanda->veureCarro() as $variable) {
-                            echo $variable;
-                        }
+                        echo $controllercomanda->veureCarro();
+                        echo "<br><br>Total: ".$controllercomanda->preuFinal();
                     } else {
                         echo "No has afegit res al carro";
                     }

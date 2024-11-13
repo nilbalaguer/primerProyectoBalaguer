@@ -34,14 +34,20 @@ header a {
 }
 
 .desplegablemenu {
+
     display: none;
     background-color: #333;
-    color: white;
-    
+    color: white;  
+}
+
+.desplegablemenu:hover {
+    transition: 1000ms;
 }
 
 #divlinkclient:hover .desplegablemenu {
-    display: block;
+    transition: 1000ms;
+    display:block;
+    
 }
 
 #firstdivfooter {

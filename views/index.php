@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/comanda.css">
     <link rel="stylesheet" href="/css/carta.css">
+    <link rel="stylesheet" href="/css/perfil.css">
     <title>FOODCRAFT</title>
 </head>
 <body>
@@ -23,6 +24,10 @@
         </div>
         <div id="divlinkclient">
             <a id="maindesplegable" href="#">CLIENT</a>
+            <?php
+            if (isset($_SESSION['usuari'])) {
+                echo $_SESSION['usuari'];
+            } ?>
             <a href="<?=url?>usuario/iniciaSessio" class="desplegablemenu">Inicia Sessio</a>
             <a href="<?=url?>usuario/tancaSessio" class="desplegablemenu">Tanca Sessio</a>
             <a href="<?=url?>usuario/perfil" class="desplegablemenu">Perfil de usuari</a>

@@ -31,6 +31,8 @@
                 <a>Comanda</a>
                 <br>
                 <a>Finalitza la sessió</a>
+                <br>
+                <a href="<?=url?>producto/borrarCookies">Borrar cookies</a>
             </div>
             <div>
                 <h2>Tenda</h2>

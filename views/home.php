@@ -18,17 +18,17 @@
     <!-- Fila de productos con tres columnas -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col text-center">
-            <img src="/img/burgers/bigcraft.png" class="img-fluid" alt="Bigcraft">
+            <img src="/img/burgers/bigcraft.webp" class="img-fluid" alt="Bigcraft">
             <h3>BigCraft</h3>
             <p>Ara: 9,35 €</p>
         </div>
         <div class="col text-center">
-            <img src="/img/burgers/extremecraftdouble.png" class="img-fluid" alt="Extreme Craft Double">
+            <img src="/img/burgers/extremecraftdouble.webp" class="img-fluid" alt="Extreme Craft Double">
             <h3>Extreme Craft Double</h3>
             <p>Ara: 11,90 €</p>
         </div>
         <div class="col text-center">
-            <img src="/img/burgers/amanida.png" class="img-fluid" alt="Amanida Craft">
+            <img src="/img/burgers/amanida.webp" class="img-fluid" alt="Amanida Craft">
             <h3>Amanida Craft</h3>
             <p>Ara: 9,35 €</p>
         </div>
@@ -62,16 +62,16 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
-            <img src="/img/burgers/bigcraft.png" class="img-fluid" alt="Bigcraft">
+            <img src="/img/burgers/bigcraft.webp" class="img-fluid" alt="Bigcraft">
             <h3>Hamburgeses</h3>
             <p>De la millor qualitat i de casa</p>
         </div>
         <div class="col d-none d-md-block">
-            <img src="/img/burgers/patatas.png" class="img-fluid" alt="Patatas">
+            <img src="/img/burgers/patatas.webp" class="img-fluid" alt="Patatas">
             <h3>Patates Fregides</h3>
         </div>
         <div class="col d-none d-md-block">
-            <img src="/img/burgers/nuggets.png" class="img-fluid" alt="Nuggets">
+            <img src="/img/burgers/nuggets.webp" class="img-fluid" alt="Nuggets">
             <h3>Nuggets</h3>
             <p>100% fets amb pollastre</p>
         </div>

@@ -2,11 +2,22 @@
 session_start();
 ?>
 
-<h1>Perfil</h1>
+<div id="gridprofile">
+    <div id="lateralperfil">
+        <img id="fotoperfil" src="<?=url?>img/users/<?=$_SESSION['usuari'];?>.png" alt="Foto de perfil">
+        <br>
+        <h2 id="nomperfil"><?=$_SESSION['usuari'];?></h2>
+        <br>
+        <?=$_SESSION['nom'];?>
+        <br>
+        <br>
+        <?=$_SESSION['id'];?>
+        <br>
+    </div>
 
-<?=$_SESSION['id'];?>
-<br>
-<?=$_SESSION['usuari'];?>
-<br>
-<?=$_SESSION['nom'];?>
-<br>
+    <div id="restoperfil">
+        <h1>La Meva Conta</h1>
+        <div>si</div>
+        <div>si</div>
+    </div>
+</div>

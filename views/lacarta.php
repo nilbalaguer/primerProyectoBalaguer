@@ -3,7 +3,7 @@ include_once "controllers/productoController.php";
 $controllercarta = new productoController();
 
 if (isset($_GET['id'])) {
-    $controllercarta->afegirProducte($_GET['id']);
+    $controllercarta->afegirProducte($_GET['id'], $_GET['preu'], $_GET['nom']);
 
     header("Location: ".url."producto/lacarta");
 }
@@ -28,12 +28,12 @@ $productes = $controllercarta->mostrarProductes();
         <!--Finestra que es pot moure i mostra els productes afegits al carro-->
         <?php if (isset($_COOKIE['carro'])) {?>
         <div id="ventana">
-            <div id="ventana-header">Arrástrame</div>
+            <div id="ventana-header"><h2 class="heading2">COMANDA</h2></div>
             <?php
-                foreach ($controllercarta->veureCarro() as $variable) {
-                    echo $variable;
-                }
+                echo $controllercarta->veureCarro();
+                echo "<br><br>Total: ".$controllercarta->preuFinal()."<br>";
             ?>
+            <a class="smallgreenbutton" href="<?=url?>producto/comanda">FINALITZA LA COMPRA</a>
         </div>
 
         <script>
@@ -78,20 +78,24 @@ $productes = $controllercarta->mostrarProductes();
         <?php } ?>
 
         <div id="divProductos">
-            <?php for ($i=0; $i < count($productes)/3; $i++) {?>
+            <?php for ($i = 0; $i < count($productes); $i += 3) { ?>
                 <div class="row">
-                    <?php for ($j=0; $j < 3*count($productes); $j++) {?>
+                    <?php for ($j = 0; $j < 3; $j++) {
+                        $temporalId = $i + $j;
+                        if ($temporalId >= count($productes)) break;
+                        ?>
                         <div class="col">
-                            <img class="cartaimages" src="/img/burgers/<?=$productes[$j + $i]->getImagen()?>.png" alt="hamburgesa">
-                            <h3><?=$productes[$j + $i]->getNombre()?></h3>
+                            <img class="cartaimages" src="/img/burgers/<?=$productes[$temporalId]->getImagen()?>.webp" alt="hamburgesa">
+                            <h3><?=$productes[$temporalId]->getNombre()?></h3>
                             <div class="d-flex justify-content-around">
-                                <p><?=$productes[$j + $i]->getPrecio()?> €</p>
+                                <p><?=$productes[$temporalId]->getPrecio()?> €</p>
                                 <form method="GET" action="lacarta">
-                                    <input hidden name="id" value="<?=$productes[$j + $i]->getId()?>">
-                                    <label for="submit<?=$productes[$j+$i]->getId()?>"><img src='/img/plus.png' alt='+'></label>
-                                    <input hidden id="submit<?=$productes[$j+$i]->getId()?>" class="plusimage" type="submit" value="+" alt="Afegir">
+                                    <input hidden name="id" value="<?=$productes[$temporalId]->getId()?>">
+                                    <input hidden name="preu" value="<?=$productes[$temporalId]->getPrecio()?>">
+                                    <input hidden name="nom" value="<?=$productes[$temporalId]->getNombre()?>">
+                                    <label for="submit<?=$productes[$temporalId]->getId()?>"><img src='/img/plus.png' alt='+'></label>
+                                    <input hidden id="submit<?=$productes[$temporalId]->getId()?>" class="plusimage" type="submit" value="+" alt="Afegir">
                                 </form>
-                                
                             </div>
                         </div>
                     <?php } ?>
