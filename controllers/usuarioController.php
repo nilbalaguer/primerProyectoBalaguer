@@ -20,7 +20,7 @@ class usuarioController
         session_start();
         session_destroy();
 
-        header("Location:".url."producto/home");
+        header("Location:".url."usuario/iniciaSessio");
     }
 
     public function startSession($usuari, $contrasenya) {
