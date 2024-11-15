@@ -25,9 +25,9 @@ class productoController{
     }
 
     //Obtindre productes de la base de dades
-    public function mostrarProductes() {
+    public function mostrarProductes($categoria = null) {
         $producto = new ProductoDAO();
-        $producto = $producto->getAll();
+        $producto = $producto->getAll($categoria);
 
         return $producto;
     }

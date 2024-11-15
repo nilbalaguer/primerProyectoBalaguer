@@ -8,7 +8,13 @@ if (isset($_GET['id'])) {
     header("Location: ".url."producto/lacarta");
 }
 
-$productes = $controllercarta->mostrarProductes();
+$productes = [];
+
+if (isset($_GET['categoria'])) {
+    $productes = $controllercarta->mostrarProductes($_GET['categoria']);
+} else {
+    $productes = $controllercarta->mostrarProductes();
+}
 
 ?>
 
@@ -19,11 +25,11 @@ $productes = $controllercarta->mostrarProductes();
             <h2 class="heading2">LA CARTA</h2>
         </div>
         <div id="filtroslinks" class="d-flex justify-content-center mb-4 space-between">
-            <a class="mx-2">POLLASTRE</a>
-            <a class="mx-2">HAMBURGESES</a>
-            <a class="mx-2">TOT</a>
-            <a class="mx-2">COMPLEMENTS</a>
-            <a class="mx-2">VEDELLA</a>
+            <a class="mx-2" href="lacarta?categoria=pollo">POLLASTRE</a>
+            <a class="mx-2" href="lacarta?categoria=hamburgesa">HAMBURGESES</a>
+            <a class="mx-2" href="lacarta">TOT</a>
+            <a class="mx-2" href="lacarta?categoria=complements">COMPLEMENTS</a>
+            <a class="mx-2" href="lacarta?categoria=vedella">VEDELLA</a>
         </div>
         <!--Finestra que es pot moure i mostra els productes afegits al carro-->
         <?php if (isset($_COOKIE['carro'])) {?>

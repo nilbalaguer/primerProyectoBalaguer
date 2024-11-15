@@ -31,6 +31,10 @@ h2 {
     font-size: 24px;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .buttondiscount {
     background-color: red;
     font-family: "MinecraftTen", "Noto Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";

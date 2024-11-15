@@ -20,7 +20,7 @@
         <div id="centrallinks">
             <a href="<?=url?>producto/home">INICI</a>
             <a href="<?=url?>producto/lacarta">LA CARTA</a>
-            <a href="<?=url?>producto/comanda">COMANDA</a>
+            <a class="d-none d-xl-block" href="<?=url?>producto/comanda">COMANDA</a>
         </div>
         <div id="divlinkclient">
             <a id="maindesplegable" href="#">CLIENT</a>
@@ -28,9 +28,11 @@
             if (isset($_SESSION['usuari'])) {
                 echo $_SESSION['usuari'];
             } ?>
-            <a href="<?=url?>usuario/iniciaSessio" class="desplegablemenu">Inicia Sessio</a>
-            <a href="<?=url?>usuario/tancaSessio" class="desplegablemenu">Tanca Sessio</a>
-            <a href="<?=url?>usuario/perfil" class="desplegablemenu">Perfil de usuari</a>
+            <div class="desplegablemenu">
+                <a href="<?=url?>usuario/iniciaSessio">Inicia Sessio</a>
+                <a href="<?=url?>usuario/tancaSessio">Tanca Sessio</a>
+                <a href="<?=url?>usuario/perfil">Perfil de usuari</a>
+            </div>
         </div>
     </header>
 

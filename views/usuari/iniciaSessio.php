@@ -16,17 +16,19 @@
             <h2 class="heading2">INICIA SESSIO</h2>
         </div>
         <form action="/usuario/iniciaSessio" method="post">
-            <label>Nombre</label>
+            <label>Usuari:</label>
             <br>
             <input name="usuario">
             <br><br>
-            <label>Clau d'acces</label>
+            <label>Clau d'acces:</label>
             <br>
             <input type="password" name="contrasenya">
             <br><br>
-            <input type="submit">
+            <input class="greenbutton" type="submit" value="Entrar">
         </form>
-        <a>No tens conta? Registrat!</a>
+        <div id="loginadiv">
+            <a href="/usuario/registrarse">No tens conta? Registrat!</a>
+        </div>
     </div>
     <div id="divbee">
         <img src="/img/bee.gif">

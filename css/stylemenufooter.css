@@ -16,8 +16,9 @@ header a {
 }
 
 #logoimageheader {
-    height: 60px;
-    width: 380px;
+    max-width: 380px;
+    max-height: 60px;
+    width: 100%;
 }
 
 #centrallinks {
@@ -38,6 +39,13 @@ header a {
     display: none;
     background-color: #333;
     color: white;  
+    position: absolute;
+    top: 10%;
+    left: 75%;
+}
+
+.desplegablemenu * {
+    background-color: #333;
 }
 
 .desplegablemenu:hover {
@@ -79,8 +87,9 @@ header a {
 }
 
 #cautionbestfoodimage {
-    height: 198px;
-    width: 303px;
+    width: 100%;
+    max-width: 303px;
+    max-height: 198px;
 }
 
 #footerlinksroot {
@@ -91,4 +100,9 @@ header a {
 
 #footerlinksroot a{
     color: #A0E081;
+}
+
+.footerfoodimage {
+    max-width: 158px;
+    width: 100%;
 }

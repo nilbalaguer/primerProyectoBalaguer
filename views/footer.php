@@ -10,9 +10,9 @@
         </div>
     </div>
     <div id="seconddivfooter">
-        <div>
-            <img src="/img/beansbucket.png" alt="hamburgesa">
-            <img src="/img/minecrafthamburger.png" alt="beans">
+        <div class="footerfoodimage">
+            <img class="footerfoodimage" src="/img/beansbucket.png" alt="hamburgesa">
+            <img class="footerfoodimage" src="/img/minecrafthamburger.png" alt="beans">
         </div>
         <div id="footerlinksroot">
             <div>
@@ -54,7 +54,7 @@
         <a>Privacitat i Cookies</a>
         <a>Termes d'ús</a>
         <a>© 2024 FOODCRAFT</a>
-        <img src="/img/FoodCraft.png" alt="FOODCRAFT">
+        <img class="d-none d-xl-block" src="/img/FoodCraft.png" alt="FOODCRAFT">
     </div>
 </footer>
 </body>

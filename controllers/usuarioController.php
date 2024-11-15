@@ -9,6 +9,10 @@ class usuarioController
         include_once "views/usuari/iniciaSessio.php";
     }
 
+    public function registrarse() {
+        include_once "views/usuari/registre.php";
+    }
+
     public function perfil() {
         //Dirigeix a la pagina del perfil de usuari
         include_once "views/usuari/perfil.php";
@@ -40,5 +44,17 @@ class usuarioController
         } else {
             echo "Usuari o Contrasenya incorrecta :(";
         }
+    }
+
+    public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida, $imatge) {
+        if ($contrasenya == $contrasenyarepetida) {
+            echo "Creant conta...";
+            $usuariDAO = new UsuarioDAO();
+            $usuariDAO->insertaUsuari($nom, $usuari, $contrasenya);
+        } else {
+            echo "Les Claus no coinsideixen :(";
+        }
+
+        echo $usuari.$nom.$contrasenya.$contrasenyarepetida.$imatge;
     }
 }
