@@ -9,19 +9,9 @@ class productoController{
         include_once("views/index.php");
     }
 
-    public function newProducto() {
-        echo"Crear nuevo producto";
-    }
-
-    public function crear() {
-        /*
-        $producto = new CamisetaDAO();
-        $producto = $producto->getAll();
-        $producto = $producto->store($producto);
-        */
-
-        include_once("views/productos/create.php");
-        
+    public function finalitzarCompra($idcliente, $iddescuento = null, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = []) {
+        $producto = new ProductoDAO();
+        $producto->insertarPedido($idcliente, $iddescuento, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos);
     }
 
     //Obtindre productes de la base de dades
@@ -57,6 +47,17 @@ class productoController{
         }
 
         return $resultado."</ol>";
+    }
+
+    public function idCarro() {
+        $data = json_decode($_COOKIE['carro'], true);
+        $resultado = [];
+
+        foreach ($data as $variable) {
+            $resultado[] = $variable['id'];
+        }
+
+        return $resultado;
     }
 
     public function preuFinal() {

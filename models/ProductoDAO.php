@@ -51,6 +51,24 @@ class ProductoDAO{
         $con->close();
     }
 
+    //Afegir la comanda a la taula pedidos i els producte d'aquesta a la taula productos_pedidos
+    public static function insertarPedido($idcliente, $iddescuento = null, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = []) {
+        $con = DataBase::connect();
+        $stmt = $con->prepare("INSERT INTO pedidos (id_cliente, id_descuento, localidad, codigopostal, calle, nombre, telefono) VALUES (?,?,?,?,?,?,?)");
+        $stmt->bind_param("ddsdssd", $idcliente, $iddescuento, $localidad, $codigopostal, $calle, $nombre, $telefono);
+        $stmt->execute();
+
+        $id_pedido = $con->insert_id;
+
+        for ($i=0; $i < count($productos); $i++) {
+            $stmt = $con->prepare("INSERT INTO productos_pedidos VALUES(?,?)");
+            $stmt->bind_param("dd", $id_pedido, $productos[$i]);
+            $stmt->execute();
+        }
+
+        $con->close();
+    }
+
     public static function destroy($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("DELETE FROM camisetas WHERE id = ?");

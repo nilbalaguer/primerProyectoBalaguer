@@ -1,5 +1,14 @@
+<?php
+    include_once "controllers/productoController.php";
+    $controllercomanda = new productoController();
+    session_start();
+
+    if (isset($_POST['nomclient'])) {
+        $controllercomanda->finalitzarCompra($_SESSION['id'], $_POST['codidescompte'], $_POST['localitat'], $_POST['codipostal'], $_POST['carrernumero'], $_POST['nomclient'], $_POST['telefon'], $controllercomanda->idCarro());
+    }
+?>
 <div id="backgroundcomanda">
-    <form id="formulariocomanda" class="container" method="post" action="">
+    <form id="formulariocomanda" class="container" method="post" action="comanda">
         <div class="text-center d-flex justify-content-center">
             <h2 class="heading2">COMANDA</h2>
             <img src="/img/coin.png">
@@ -25,7 +34,7 @@
                 <br><br>
                 <label>Numero de Telèfon:</label>
                 <br>
-                <input name="telefon" type="text">
+                <input name="telefon" type="tlf">
                 <br><br>
                 <label>Codi de Descompte:</label>
                 <br>
@@ -33,9 +42,6 @@
             </div>
             <div class="col" id="demanatbox">
                 <?php
-                    include_once "controllers/productoController.php";
-                    $controllercomanda = new productoController();
-
                     if (isset($_COOKIE['carro'])) {
                         echo $controllercomanda->veureCarro();
                         echo "<br><br>Total: ".$controllercomanda->preuFinal();
