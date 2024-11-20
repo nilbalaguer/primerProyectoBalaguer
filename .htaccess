@@ -1,6 +1,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+
+    # Excluir archivos estáticos de la reescritura
+    RewriteCond %{REQUEST_URI} !\.(js|css|jpg|jpeg|png|gif|ico|html)$ [NC]
+
     RewriteCond %{SCRIPT_FILENAME} !-d
     RewriteCond %{SCRIPT_FILENAME} !-f
     RewriteRule ^(.*)/(.*)$ index.php?controller=$1&action=$2&%{QUERY_STRING}
 </IfModule>
+
+ErrorDocument 404 /public/errores/404.php

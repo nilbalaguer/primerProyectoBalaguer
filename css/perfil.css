@@ -107,3 +107,17 @@
     display: flex;
     justify-content: center;
 }
+
+#fondoiniciasessioadmin {
+    background-image: url("../img/Soy_admin.webp");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#fondoiniciasessioadmin * {
+    color: black;
+}
