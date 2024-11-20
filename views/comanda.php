@@ -1,7 +1,6 @@
 <?php
     include_once "controllers/productoController.php";
     $controllercomanda = new productoController();
-    session_start();
 
     if (isset($_POST['nomclient'])) {
         $controllercomanda->finalitzarCompra($_SESSION['id'], $_POST['codidescompte'], $_POST['localitat'], $_POST['codipostal'], $_POST['carrernumero'], $_POST['nomclient'], $_POST['telefon'], $controllercomanda->idCarro());

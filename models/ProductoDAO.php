@@ -69,6 +69,66 @@ class ProductoDAO{
         $con->close();
     }
 
+    public static function verPedidosCliente() {
+        try {
+            $con = DataBase::connect();
+            
+            $stmt = $con->prepare("SELECT * FROM pedidos WHERE id_cliente = ? ORDER BY id_pedido DESC");
+            $stmt->bind_param("d", $_SESSION['id']);
+    
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            
+    
+            $pedidos = "";
+            while ($row = $result->fetch_assoc()) {
+                $pedidos .= "<div class='profileorderproducts'><h4 class='profileordertitle'><b>Identificador Pedido:</b> ".$row['id_pedido']."<br> <b>Descompte:</b> ".$row['id_descuento']." <b>Localitat:</b> ".$row['localidad']." <b>Codi Postal:</b> ".$row['codigopostal']." <b>Carrer:</b> ".$row['calle']." <b>Nom del client:</b> ".$row['nombre']." <b>Telefon:</b> ".$row['telefono']."</h4><div class='onlyproductsprofile'>";
+                $stmt = $con->prepare("SELECT * FROM productos_pedidos WHERE id_pedido = ?");
+                $stmt->bind_param("d", $row['id_pedido']);
+
+                $stmt->execute();
+                $result1 = $stmt->get_result();
+                $pedidos .= "<div>";
+                while ($row1 = $result1->fetch_assoc()) {
+                    $producto = ProductoDAO::getProductoById($row1['id_producto']);
+                    $pedidos .= "<div class='productoenperfildiv'>".$producto[0]->getNombre()." ".$producto[0]->getPrecio()." <img class='comandaimagesperfil' src='/img/burgers/".$producto[0]->getImagen().".webp' alt='imatge producte'></div>";
+                }
+                $pedidos .= "</div></div></div>";
+            }
+    
+            $con->close();
+            return $pedidos;
+        } catch (\Throwable $th) {
+            echo "<p style='font-size: 200%; font-weight: bold; color: red;'>Els nostres servidors no estan disponibles :(</p><p>Lamentem les molesties</p>";
+            throw $th;
+        }
+    }
+
+    public static function getProductoById($id) {
+        try {
+            $con = DataBase::connect();
+            
+            $stmt = $con->prepare("SELECT * FROM productos WHERE id = ?");
+            $stmt->bind_param("d", $id);
+    
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            $productos = [];
+            while ($row = $result->fetch_assoc()) {
+                $producto = new Comestible($row['id'], $row['nombre'], $row['descripcion'], $row['precio'], $row['imagen']);
+                $productos[] = $producto;
+            }
+    
+            $con->close();
+            return $productos;
+        } catch (\Throwable $th) {
+            echo "<p style='font-size: 200%; font-weight: bold; color: red;'>Els nostres servidors no estan disponibles :(</p><p>Lamentem les molesties</p>";
+            throw $th;
+        }
+    }
+
     public static function destroy($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("DELETE FROM camisetas WHERE id = ?");

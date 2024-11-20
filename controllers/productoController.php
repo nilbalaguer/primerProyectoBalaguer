@@ -9,9 +9,17 @@ class productoController{
         include_once("views/index.php");
     }
 
+    public function verPedidosCliente() {
+        $producto = new ProductoDAO();
+        $info = $producto->verPedidosCliente();
+
+        return $info;
+    }
+
     public function finalitzarCompra($idcliente, $iddescuento = null, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = []) {
         $producto = new ProductoDAO();
         $producto->insertarPedido($idcliente, $iddescuento, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos);
+        header("Location: /usuario/perfil");
     }
 
     //Obtindre productes de la base de dades

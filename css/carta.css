@@ -14,12 +14,17 @@
     padding: 40px;
 }
 
+#filtroslinks {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
 #filtroslinks a {
     font-weight: 600;
     font-size: 130%;
     text-decoration: none;
     color: #ffffff;
-    padding: 45px;
 }
 
 #lacartatitle {

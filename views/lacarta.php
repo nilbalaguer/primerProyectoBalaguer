@@ -24,7 +24,7 @@ if (isset($_GET['categoria'])) {
         <div id="lacartatitle" class="text-center mb-3">
             <h2 class="heading2">LA CARTA</h2>
         </div>
-        <div id="filtroslinks" class="d-flex justify-content-center mb-4 space-between">
+        <div id="filtroslinks" class="d-flex justify-content-around mb-4">
             <a class="mx-2" href="lacarta?categoria=pollo">POLLASTRE</a>
             <a class="mx-2" href="lacarta?categoria=hamburgesa">HAMBURGESES</a>
             <a class="mx-2" href="lacarta">TOT</a>

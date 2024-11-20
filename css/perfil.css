@@ -68,9 +68,42 @@
 
 #divbee2 img {
     height: 300px;
+    transform: scaleX(-1);
+    
 }
 
 #loginadiv {
     text-align: center;
 }
 
+.profileordertitle {
+    background-color: var(--logingray);
+    box-shadow: inset 0 -.125rem 0 rgba(0, 0, 0, .2), inset 0 .125rem 0 hsla(0, 0%, 100%, .10196078431372549);
+    font-size: 100%;
+    padding: 10px;
+}
+
+.profileorderproducts {
+    background-color: var(--perfilgray);
+    box-shadow: inset 0 -.125rem 0 rgba(0, 0, 0, .2), inset 0 .125rem 0 hsla(0, 0%, 100%, .10196078431372549);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.profileorderproducts * {
+    color: black;
+}
+
+.comandaimagesperfil {
+    width: 200px;
+}
+
+.productoenperfildiv {
+    background-color: var(--logingray);
+    margin: 10px;
+}
+
+.onlyproductsprofile {
+    display: flex;
+    justify-content: center;
+}

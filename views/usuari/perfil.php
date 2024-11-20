@@ -1,7 +1,3 @@
-<?php 
-session_start();
-?>
-
 <div id="gridprofile">
     <div id="lateralperfil">
         <img id="fotoperfil" src="<?=url?>img/users/<?=$_SESSION['usuari'];?>.png" alt="Foto de perfil">
@@ -16,8 +12,13 @@ session_start();
     </div>
 
     <div id="restoperfil">
-        <h1>La Meva Conta</h1>
-        <div>si</div>
-        <div>si</div>
+        <h1 class="heading2">Les meves Comandes</h1>
+        <div>
+            <?php
+                $perfilcontroller = new productoController();
+                echo $perfilcontroller->verPedidosCliente();
+
+            ?>
+        </div>
     </div>
 </div>

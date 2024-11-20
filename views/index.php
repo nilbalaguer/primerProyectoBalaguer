@@ -23,17 +23,22 @@
             <a class="d-none d-xl-block" href="<?=url?>producto/comanda">COMANDA</a>
         </div>
         <div id="divlinkclient">
-            <a id="maindesplegable" href="#">CLIENT</a>
-            <?php
-            if (isset($_SESSION['usuari'])) {
-                echo $_SESSION['usuari'];
-            } ?>
-            <div class="desplegablemenu">
-                <a href="<?=url?>usuario/iniciaSessio">Inicia Sessio</a>
-                <a href="<?=url?>usuario/tancaSessio">Tanca Sessio</a>
-                <a href="<?=url?>usuario/perfil">Perfil de usuari</a>
-            </div>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                CLIENT
+            </button>
+            <ul class="dropdown-menu">
+                <?php
+                session_start();
+                if (isset($_SESSION['usuari'])) {
+                    echo "<li><h2 class='heading2 dropdown-item'>".$_SESSION['usuari']."</h2></li>";
+                }
+                ?>
+                <li><a class="dropdown-item" href="<?=url?>usuario/iniciaSessio">Inicia Sessio</a></li>
+                <li><a class="dropdown-item" href="<?=url?>usuario/tancaSessio">Tanca Sessio</a></li>
+                <li><a class="dropdown-item" href="<?=url?>usuario/perfil">Perfil de usuari</a></li>
+            </ul>
         </div>
+        
     </header>
 
     <?php

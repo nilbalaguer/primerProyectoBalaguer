@@ -4,6 +4,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 40px;
+    box-shadow: inset 0 -5px 0 var(--background31);
 }
 
 header nav {
@@ -32,6 +33,17 @@ header a {
     width: 380px;
     text-align: center;
     align-items: center;
+}
+
+#divlinkclient * {
+    border-radius: 0;
+}
+
+#divlinkclient button {
+    background-color: var(--background1);
+    border: 0;
+    font-family: 'Noto Sans';
+    font-weight: bold;
 }
 
 .desplegablemenu {
