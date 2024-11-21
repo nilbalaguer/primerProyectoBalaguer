@@ -16,9 +16,9 @@ class productoController{
         return $info;
     }
 
-    public function finalitzarCompra($idcliente, $iddescuento = null, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = []) {
+    public function finalitzarCompra($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = [], $iddescuento = null) {
         $producto = new ProductoDAO();
-        $producto->insertarPedido($idcliente, $iddescuento, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos);
+        $producto->insertarPedido($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos, $iddescuento);
         header("Location: /usuario/perfil");
     }
 

@@ -52,7 +52,7 @@ class ProductoDAO{
     }
 
     //Afegir la comanda a la taula pedidos i els producte d'aquesta a la taula productos_pedidos
-    public static function insertarPedido($idcliente, $iddescuento = null, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = []) {
+    public static function insertarPedido($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = [], $iddescuento = null) {
         $con = DataBase::connect();
         $stmt = $con->prepare("INSERT INTO pedidos (id_cliente, id_descuento, localidad, codigopostal, calle, nombre, telefono) VALUES (?,?,?,?,?,?,?)");
         $stmt->bind_param("ddsdssd", $idcliente, $iddescuento, $localidad, $codigopostal, $calle, $nombre, $telefono);
