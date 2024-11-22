@@ -1,0 +1,15 @@
+#adminfondo * {
+    color: black;
+}
+
+#adminfondo {
+    background-color: gainsboro;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 100%;
+}
+
+#adminfondo div {
+    border: 1px solid black;
+    padding: 20px;
+}

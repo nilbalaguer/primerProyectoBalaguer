@@ -21,6 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         if (data.estado === 'Exito') {
             alert(data.mensaje);
             // Aquí puedes redirigir o realizar acciones después de iniciar sesión
+            window.location.replace('http://primerProyectoBalaguer.com/admin/panelAdmin');
         } else {
             alert('Error: ' + data.mensaje);
         }

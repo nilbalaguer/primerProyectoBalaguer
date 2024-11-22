@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/comanda.css">
     <link rel="stylesheet" href="/css/carta.css">
     <link rel="stylesheet" href="/css/perfil.css">
+    <link rel="stylesheet" href="/css/admin.css">
     <title>FOODCRAFT</title>
 </head>
 <body>
