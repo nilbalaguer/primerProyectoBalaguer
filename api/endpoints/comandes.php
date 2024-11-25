@@ -1,30 +1,64 @@
 <?php
-include_once "../dataBase.php";
-include_once "/models/Comestible.php";
+include_once __DIR__ . "/../../config/dataBase.php";
+include_once __DIR__ . "/../../models/Comestible.php";
 
-//echo json_encode("Núria ets la millor del mon i del univers");
+function mostrarTot($order) {
 
-$categoria = null;
+    $con = DataBase::connect();
 
-$con = DataBase::connect();
+    $stmt = "";
+    if ($order > 0) {
+        $stmt = $con->prepare("SELECT * FROM pedidos ORDER BY $order");
+    } else {
+        $stmt = $con->prepare("SELECT * FROM pedidos");
+    }
 
-if ($categoria !== null) {
-    $stmt = $con->prepare("SELECT * FROM productos WHERE categoria LIKE ? ORDER BY $order");
-    $categoria = "%" . $categoria . "%";
-    $stmt->bind_param("s", $categoria);
-} else {
-    $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $productos = [];
+    while ($row = $result->fetch_assoc()) {
+        $producto = [
+            "id_comanda" => $row['id_pedido'],
+            "id_client" => $row['id_cliente'],
+            "descompte" => $row['id_descuento'],
+            "localitat" => $row['localidad'],
+            "codipostal" => $row['codigopostal'],
+            "carrer" => $row['calle'],
+            "nom" => $row['nombre'],
+            "telefon" => $row['telefono'],
+            "preu" => $row['precio']
+        ];
+        $productos[] = $producto;
+    }
+
+    $con->close();
+
+    $response = [
+        "status" => "success",
+        "data" => $productos
+    ];
+
+    return json_encode($response);
 }
 
-$stmt->execute();
-$result = $stmt->get_result();
+function eliminar($id) {
+    $con = DataBase::connect();
+    //Borrar comanda
+    $stmt = $con->prepare("DELETE FROM pedidos WHERE id_pedido = ?");
+    $stmt-> bind_param("d", $id);
+    $stmt-> execute();
+    
+    //Borrar productes de comanda
+    $stmt = $con->prepare("DELETE FROM productos_pedidos WHERE id_pedido = ?");
+    $stmt-> bind_param("d", $id);
+    $stmt-> execute();
 
-$productos = [];
-while ($row = $result->fetch_assoc()) {
-    $producto = new Comestible($row['id'], $row['nombre'], $row['descripcion'], $row['precio'], $row['imagen']);
-    $productos[] = $producto;
+    $stmt-> close();
+
+    return json_encode("COMANDA ESBORRADA");
 }
 
-$con->close();
-
-echo json_encode($productos[0]->getNombre());
+function clauAdmin() {
+    return "080705";
+}

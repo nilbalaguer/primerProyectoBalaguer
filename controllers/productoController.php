@@ -18,7 +18,7 @@ class productoController{
 
     public function finalitzarCompra($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = [], $iddescuento = null) {
         $producto = new ProductoDAO();
-        $producto->insertarPedido($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos, $iddescuento);
+        $producto->insertarPedido($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos, productoController::preuFinal() ,$iddescuento);
         header("Location: /usuario/perfil");
     }
 

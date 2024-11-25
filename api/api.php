@@ -1,4 +1,6 @@
 <?php
+include_once "endpoints/comandes.php";
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
@@ -40,34 +42,14 @@ if ($metodo == 'POST') {
     if(isset($_GET['id'])) {
         echo json_encode("Núria guapa");
     } elseif (isset($_GET['comandes'])) {
-        include_once "dataBase.php";
-        include_once "http://primerProyectoBalaguer/models/Comestible.php";
-
-        //echo json_encode("Núria ets la millor del mon i del univers");
-
-        $categoria = null;
-
-        $con = DataBase::connect();
-
-        if ($categoria !== null) {
-            $stmt = $con->prepare("SELECT * FROM productos WHERE categoria LIKE ? ORDER BY $order");
-            $categoria = "%" . $categoria . "%";
-            $stmt->bind_param("s", $categoria);
+        echo mostrarTot($_GET['comandes']);
+    } elseif (isset($_GET['eliminar'])&&isset($_GET['clau'])) {
+        if ($_GET['clau'] == clauAdmin()) {
+            echo eliminar($_GET['eliminar']);
         } else {
-            $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order");
+            echo json_encode("Clau Incorrecta");
         }
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $productos = [];
-        while ($row = $result->fetch_assoc()) {
-            $producto = new Comestible($row['id'], $row['nombre'], $row['descripcion'], $row['precio'], $row['imagen']);
-            $productos[] = $producto;
-        }
-
-        $con->close();
-
-        echo json_encode($productos[0]->getNombre());
+    } else {
+        echo json_encode("Operacio Desconeguda");
     }
 }

@@ -13,3 +13,14 @@
     border: 1px solid black;
     padding: 20px;
 }
+
+.recuadreComandaAdmin {
+    background-color: gray;
+    padding: 20px;
+}
+
+#iconoCargaAdmin {
+    display: none;
+    height: 5rem;
+    width: 5rem;
+}
