@@ -31,9 +31,11 @@ class UsuarioDAO {
 
     public static function insertaUsuari($nombre, $usuario, $contrasenya) {
         try {
+            $clau = password_hash($contrasenya, PASSWORD_DEFAULT);
+
             $con = DataBase::connect();
             $stmt = $con->prepare("INSERT INTO clientes (nombre, usuario, contrasenya) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $nombre, $usuario, $contrasenya);
+            $stmt->bind_param("sss", $nombre, $usuario, $clau);
             
             if ($stmt->execute()) {
                 echo "Execucio efectiva";

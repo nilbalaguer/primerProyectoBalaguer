@@ -3,60 +3,85 @@ include_once __DIR__ . "/../../config/dataBase.php";
 include_once __DIR__ . "/../../models/Comestible.php";
 
 function mostrarTot($order) {
+    try {
+        $con = DataBase::connect();
 
-    $con = DataBase::connect();
+        $stmt = "";
+        if ($order > 0) {
+            $stmt = $con->prepare("SELECT * FROM pedidos ORDER BY $order");
+        } else {
+            $stmt = $con->prepare("SELECT * FROM pedidos");
+        }
 
-    $stmt = "";
-    if ($order > 0) {
-        $stmt = $con->prepare("SELECT * FROM pedidos ORDER BY $order");
-    } else {
-        $stmt = $con->prepare("SELECT * FROM pedidos");
-    }
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    $stmt->execute();
-    $result = $stmt->get_result();
+        $productos = [];
+        while ($row = $result->fetch_assoc()) {
+            $producto = [
+                "id_comanda" => $row['id_pedido'],
+                "id_client" => $row['id_cliente'],
+                "descompte" => $row['id_descuento'],
+                "localitat" => $row['localidad'],
+                "codipostal" => $row['codigopostal'],
+                "carrer" => $row['calle'],
+                "nom" => $row['nombre'],
+                "telefon" => $row['telefono'],
+                "preu" => $row['precio']
+            ];
+            $productos[] = $producto;
+        }
 
-    $productos = [];
-    while ($row = $result->fetch_assoc()) {
-        $producto = [
-            "id_comanda" => $row['id_pedido'],
-            "id_client" => $row['id_cliente'],
-            "descompte" => $row['id_descuento'],
-            "localitat" => $row['localidad'],
-            "codipostal" => $row['codigopostal'],
-            "carrer" => $row['calle'],
-            "nom" => $row['nombre'],
-            "telefon" => $row['telefono'],
-            "preu" => $row['precio']
+        $con->close();
+
+        $response = [
+            "status" => "success",
+            "data" => $productos
         ];
-        $productos[] = $producto;
+
+        return json_encode($response);
+    } catch (\Throwable $th) {
+        return json_encode("Error BBDD");
     }
-
-    $con->close();
-
-    $response = [
-        "status" => "success",
-        "data" => $productos
-    ];
-
-    return json_encode($response);
+    
 }
 
 function eliminar($id) {
-    $con = DataBase::connect();
-    //Borrar comanda
-    $stmt = $con->prepare("DELETE FROM pedidos WHERE id_pedido = ?");
-    $stmt-> bind_param("d", $id);
-    $stmt-> execute();
-    
-    //Borrar productes de comanda
-    $stmt = $con->prepare("DELETE FROM productos_pedidos WHERE id_pedido = ?");
-    $stmt-> bind_param("d", $id);
-    $stmt-> execute();
+    try {
+        $con = DataBase::connect();
+        //Borrar comanda
+        $stmt = $con->prepare("DELETE FROM pedidos WHERE id_pedido = ?");
+        $stmt-> bind_param("d", $id);
+        $stmt-> execute();
+        
+        //Borrar productes de comanda
+        $stmt = $con->prepare("DELETE FROM productos_pedidos WHERE id_pedido = ?");
+        $stmt-> bind_param("d", $id);
+        $stmt-> execute();
 
-    $stmt-> close();
+        $stmt-> close();
 
-    return json_encode("COMANDA ESBORRADA");
+        return json_encode("COMANDA ESBORRADA");
+    } catch (\Throwable $th) {
+        return json_encode("Error BBDD");
+    }
+}
+
+function crear($id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $telefon, $preu) {
+    try {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("INSERT INTO pedidos (id_cliente, id_descuento, localidad, codigopostal, calle, nombre, telefono, precio) VALUES(?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ddsdssdd", $id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $telefon, $preu);
+        $stmt->execute();
+
+        $stmt->close();
+
+        return json_encode("Comanda Insertada");
+    } catch (\Throwable $th) {
+        return json_encode("Error BBDD");
+    }
+
 }
 
 function clauAdmin() {

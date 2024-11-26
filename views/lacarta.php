@@ -43,35 +43,31 @@ if (isset($_GET['categoria'])) {
         </div>
 
         <script>
-            // JavaScript para mover la ventana
+            //Js per moure la finestra
             const ventana = document.getElementById("ventana");
             const header = document.getElementById("ventana-header");
 
             let offsetX = 0, offsetY = 0, mouseX = 0, mouseY = 0;
 
             header.onmousedown = function(event) {
-            event.preventDefault();
-            
-            // Posición inicial del mouse
-            mouseX = event.clientX;
-            mouseY = event.clientY;
+                event.preventDefault();
+                
+                mouseX = event.clientX;
+                mouseY = event.clientY;
 
-            document.onmousemove = moverVentana;
-            document.onmouseup = detenerVentana;
+                document.onmousemove = moverVentana;
+                document.onmouseup = detenerVentana;
             };
 
             function moverVentana(event) {
             event.preventDefault();
 
-            // Calcular el nuevo cursor
             offsetX = mouseX - event.clientX;
             offsetY = mouseY - event.clientY;
 
-            // Actualizar posición del mouse
             mouseX = event.clientX;
             mouseY = event.clientY;
 
-            // Establecer la nueva posición de la ventana
             ventana.style.top = (ventana.offsetTop - offsetY) + "px";
             ventana.style.left = (ventana.offsetLeft - offsetX) + "px";
             }

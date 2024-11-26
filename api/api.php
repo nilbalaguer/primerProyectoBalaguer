@@ -39,17 +39,23 @@ if ($metodo == 'POST') {
         ]);
     }
 } elseif ($metodo == 'GET') {
-    if(isset($_GET['id'])) {
-        echo json_encode("Núria guapa");
-    } elseif (isset($_GET['comandes'])) {
-        echo mostrarTot($_GET['comandes']);
-    } elseif (isset($_GET['eliminar'])&&isset($_GET['clau'])) {
+    if (isset($_GET['clau'])) {
         if ($_GET['clau'] == clauAdmin()) {
-            echo eliminar($_GET['eliminar']);
+            if(isset($_GET['test'])) {
+                echo json_encode("Conexio Correcta Amb la API");
+            } elseif (isset($_GET['comandes'])) {
+                echo mostrarTot($_GET['comandes']);
+            } elseif (isset($_GET['eliminar'])&&isset($_GET['clau'])) {
+                echo eliminar($_GET['eliminar']);
+            } elseif (isset($_GET['crear'])) {
+                echo "shit";//crear();
+            } else {
+                echo json_encode("Operacio Desconeguda");
+            }
         } else {
-            echo json_encode("Clau Incorrecta");
+            echo json_encode("Error La Clau no es Correcta");
         }
     } else {
-        echo json_encode("Operacio Desconeguda");
+        echo json_encode("Error Clau no creada");
     }
 }

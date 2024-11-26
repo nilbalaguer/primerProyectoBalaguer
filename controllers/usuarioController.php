@@ -32,7 +32,7 @@ class usuarioController
         $usuarioDAO = new UsuarioDAO();
         $resultado = $usuarioDAO->getUsuario($usuari);
 
-        if ($resultado != null && $contrasenya == $resultado['contrasenya']) {
+        if ($resultado != null && password_verify($contrasenya,$resultado['contrasenya']) ) {
             session_destroy();
             session_start();
 
