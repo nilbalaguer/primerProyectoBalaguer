@@ -10,12 +10,12 @@ const botonfiltrarprecio = document.getElementById("botonfiltrarprecio");
 //Icono de carrega
 const iconoCargaAdmin = document.getElementById("iconoCargaAdmin");
 
-botonmostrar.addEventListener("click", () => {mostrarProductos("")});
-botonfiltrarusuario.addEventListener("click", () => {mostrarProductos("id_cliente")});
-botonfiltrarprecio.addEventListener("click", () => {mostrarProductos("precio")});
-botonfiltrarfecha.addEventListener("click", () => {mostrarProductos("id_pedido")});
+botonmostrar.addEventListener("click", () => {mostrarComandas("")});
+botonfiltrarusuario.addEventListener("click", () => {mostrarComandas("id_cliente")});
+botonfiltrarprecio.addEventListener("click", () => {mostrarComandas("precio")});
+botonfiltrarfecha.addEventListener("click", () => {mostrarComandas("id_pedido")});
 
-async function mostrarProductos(filtro) {
+async function mostrarComandas(filtro) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
 
@@ -51,10 +51,10 @@ async function mostrarProductos(filtro) {
     inputpreu.placeholder = "Preu Final";
 
     botoncrearcomanda.textContent = "Crear";
-    botoncrearcomanda.addEventListener("click", () => {crearProducto()});
+    botoncrearcomanda.addEventListener("click", () => {crearComanda(inputclient.value, inputdescompte.value, inputlocalitat.value, inputcodipostal.value, inputcarrer.value, inputnom.value, inputtelefon.value, inputpreu.value)});
 
     botonmodificarcomanda.textContent = "Modificar";
-    botonmodificarcomanda.addEventListener("click", () => {});
+    botonmodificarcomanda.addEventListener("click", () => {modificarComanda(inputcomanda.value, inputclient.value, inputdescompte.value, inputlocalitat.value, inputcodipostal.value, inputcarrer.value, inputnom.value, inputtelefon.value, inputpreu.value)});
 
     divContenido.appendChild(inputcomanda);
     divContenido.appendChild(inputclient);
@@ -101,7 +101,7 @@ async function mostrarProductos(filtro) {
                 const borrarlink = document.createElement("button");
                 borrarlink.id = `borrarComanda${id_comanda}`;
                 borrarlink.textContent = "Eliminar Comanda";
-                borrarlink.addEventListener("click", () => {eliminarProducto(id_comanda, inputClau.value)});
+                borrarlink.addEventListener("click", () => {eliminarComanda(id_comanda, inputClau.value)});
                 parrafo.appendChild(borrarlink);
                 divContenido.appendChild(parrafo);
             });
@@ -119,7 +119,7 @@ async function mostrarProductos(filtro) {
     });
 }
 
-async function eliminarProducto(id_comanda, clau) {
+async function eliminarComanda(id_comanda, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
 
@@ -147,11 +147,41 @@ async function eliminarProducto(id_comanda, clau) {
     })
 }
 
-async function crearProducto(id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu) {
+async function crearComanda(id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
 
-    fetch(`/api/api.php?crear&clau=${inputClau.value}`, { method: "GET" })
+    fetch(`/api/api.php?crear&clau=${inputClau.value}&id_client=${id_client}&descompte=${descompte}&localitat=${localitat}&codipostal=${codipostal}&carrer=${carrer}&nom=${nom}&telefon=${telefon}&preu=${preu}`, { method: "GET" })
+    .then(response => {
+        iconoCargaAdmin.style.display = "none";
+        if (!response.ok) {
+            throw new Error("Error en la solicitud");
+        }
+        return response.json();
+    })
+    .then(data => {
+        iconoCargaAdmin.style.display = "none";
+
+        console.log(data);
+        const parrafo = document.createElement("h2");
+        parrafo.textContent = data;
+        divContenido.appendChild(parrafo);
+
+    })
+    .catch(error => {
+        iconoCargaAdmin.style.display = "none";
+        document.body.innerHTML += `<p>Error: ${error.message}</p>`;
+        console.error("Error:", error);
+    })
+}
+
+async function modificarComanda(id_comanda, id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu) {
+    iconoCargaAdmin.style.display = "block";
+    divContenido.innerHTML = "";
+
+    console.log(id_comanda, id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu);
+
+    fetch(`/api/api.php?modificar&clau=${inputClau.value}&id_comanda=${id_comanda}&id_client=${id_client}&descompte=${descompte}&localitat=${localitat}&codipostal=${codipostal}&carrer=${carrer}&nom=${nom}&telefon=${telefon}&preu=${preu}`, { method: "GET" })
     .then(response => {
         iconoCargaAdmin.style.display = "none";
         if (!response.ok) {

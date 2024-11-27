@@ -48,7 +48,9 @@ if ($metodo == 'POST') {
             } elseif (isset($_GET['eliminar'])&&isset($_GET['clau'])) {
                 echo eliminar($_GET['eliminar']);
             } elseif (isset($_GET['crear'])) {
-                echo "shit";//crear();
+                echo crear($_GET['id_client'], $_GET['descompte'], $_GET['localitat'], $_GET['codipostal'], $_GET['carrer'], $_GET['nom'], $_GET['telefon'], $_GET['preu']);
+            } elseif (isset($_GET['modificar'])) {
+                echo modificar($_GET['id_comanda'], $_GET['id_client'], $_GET['descompte'], $_GET['localitat'], $_GET['codipostal'], $_GET['carrer'], $_GET['nom'], $_GET['telefon'], $_GET['preu']);
             } else {
                 echo json_encode("Operacio Desconeguda");
             }

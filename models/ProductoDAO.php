@@ -83,7 +83,7 @@ class ProductoDAO{
     
             $pedidos = "";
             while ($row = $result->fetch_assoc()) {
-                $pedidos .= "<div class='profileorderproducts'><h4 class='profileordertitle'><b>Identificador Pedido:</b> ".$row['id_pedido']."<br> <b>Descompte:</b> ".$row['id_descuento']." <b>Localitat:</b> ".$row['localidad']." <b>Codi Postal:</b> ".$row['codigopostal']." <b>Carrer:</b> ".$row['calle']." <b>Nom del client:</b> ".$row['nombre']." <b>Telefon:</b> ".$row['telefono']."</h4><div class='onlyproductsprofile'>";
+                $pedidos .= "<div class='profileorderproducts'><h4 class='profileordertitle'><b>Identificador Comanda:</b> ".$row['id_pedido']."<br> <b>Descompte:</b> ".$row['id_descuento']." <b>Localitat:</b> ".$row['localidad']." <b>Codi Postal:</b> ".$row['codigopostal']." <b>Carrer:</b> ".$row['calle']." <b>Nom del client:</b> ".$row['nombre']." <b>Telefon:</b> ".$row['telefono']."</h4><div class='onlyproductsprofile'>";
                 $stmt = $con->prepare("SELECT * FROM productos_pedidos WHERE id_pedido = ?");
                 $stmt->bind_param("d", $row['id_pedido']);
 

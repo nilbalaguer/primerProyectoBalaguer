@@ -84,6 +84,23 @@ function crear($id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $
 
 }
 
+function modificar($id_comanda, $id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $telefon, $preu) {
+    try {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("UPDATE pedidos SET id_cliente = ?, id_descuento = ?, localidad = ?, codigopostal = ?, calle = ?, nombre = ?, telefono = ?, precio = ? WHERE id_pedido = ?");
+        $stmt->bind_param("ddsdssddd", $id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $telefon, $preu, $id_comanda);
+        $stmt->execute();
+
+        $stmt->close();
+
+        return json_encode("Comanda Modificada");
+
+    } catch (\Throwable $th) {
+        return json_encode("Error BBDD");
+    }
+}
+
 function clauAdmin() {
     return "080705";
 }
