@@ -9,6 +9,7 @@ class productoController{
         include_once("views/index.php");
     }
 
+    //Retorna les comandes fetes per el client
     public function verPedidosCliente() {
         $producto = new ProductoDAO();
         $info = $producto->verPedidosCliente();
@@ -16,6 +17,7 @@ class productoController{
         return $info;
     }
 
+    //Finalitza la compra i inserta la comanda a la base de dades
     public function finalitzarCompra($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = [], $iddescuento = null) {
         $producto = new ProductoDAO();
         $producto->insertarPedido($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos, productoController::preuFinal() ,$iddescuento);
@@ -30,6 +32,7 @@ class productoController{
         return $producto;
     }
 
+    //Afegeix productes al carro de la compra
     public function afegirProducte($id, $preu, $nom) {
         $producte = [
             "nom"=>$nom,
@@ -46,17 +49,19 @@ class productoController{
         }
     }
 
+    //Mostra els productes emagatzemats al carro
     public function veureCarro() {
         $data = json_decode($_COOKIE['carro'], true);
         $resultado = "<ol>";
 
         foreach ($data as $variable) {
-            $resultado .= "<li>".$variable['nom']." ".$variable['preu']." €</li>";
+            $resultado .= "<li>".$variable['nom']." ".$variable['preu']." € <a href='?eliminar=".$variable['id']."'><img src='/img/minus.png' alt='-'></a></li>";
         }
 
         return $resultado."</ol>";
     }
 
+    //Retorna la id dels productes del carro
     public function idCarro() {
         $data = json_decode($_COOKIE['carro'], true);
         $resultado = [];
@@ -68,6 +73,27 @@ class productoController{
         return $resultado;
     }
 
+    //Elimina un producte del carro
+    public function eliminarProducte($id) {
+        $data = json_decode($_COOKIE['carro'], true);
+
+        $cont = 0;
+        foreach ($data as $variable) {
+            if ($variable['id'] == $id) {
+                unset($data[$cont]);
+                $data = array_values($data);
+                break;
+            }
+
+            $cont++;
+        }
+
+        if (isset($_COOKIE['carro'])) {
+            setcookie("carro", json_encode($data), time() + 500, "/");
+        }
+    }
+
+    //Retorna el preu final de la suma dels productes del carro
     public function preuFinal() {
         $data = json_decode($_COOKIE['carro'], true);
         $preu = 0;
@@ -94,14 +120,17 @@ class productoController{
         header("Location: ".url."producto/home");
     }
     
+    //Dirigeix a la pagina home
     public function home() {
         include_once("views/home.php");
     }
 
+    //Dirigeix a la pagina La Carta
     public function lacarta() {
         include_once("views/lacarta.php");
     }
 
+    //Dirigeix a la pagina de comanda
     public function comanda() {
         include_once("views/comanda.php");
     }

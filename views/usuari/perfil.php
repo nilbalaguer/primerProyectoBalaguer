@@ -1,3 +1,7 @@
+<?php
+require_once "public/utils/protection.php";
+?>
+
 <div id="gridprofile">
     <div id="lateralperfil">
         <img id="fotoperfil" src="<?=url?>img/users/<?=$_SESSION['usuari'];?>.png" alt="Foto de perfil">

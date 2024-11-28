@@ -6,6 +6,10 @@ if (isset($_GET['id'])) {
     $controllercarta->afegirProducte($_GET['id'], $_GET['preu'], $_GET['nom']);
 
     header("Location: ".url."producto/lacarta");
+} elseif (isset($_GET['eliminar'])) {
+    $controllercarta->eliminarProducte($_GET['eliminar']);
+
+    header("Location: ".url."producto/lacarta");
 }
 
 $productes = [];
@@ -39,7 +43,7 @@ if (isset($_GET['categoria'])) {
                 echo $controllercarta->veureCarro();
                 echo "<br><br>Total: ".$controllercarta->preuFinal()."<br>";
             ?>
-            <a class="smallgreenbutton" href="<?=url?>producto/comanda">FINALITZA LA COMPRA</a>
+            <a class="smallgreenbutton" id="botonventanitacomanda" href="<?=url?>producto/comanda">FINALITZA LA COMPRA</a>
         </div>
 
         <script>

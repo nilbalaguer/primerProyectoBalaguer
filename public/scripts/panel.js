@@ -15,6 +15,7 @@ botonfiltrarusuario.addEventListener("click", () => {mostrarComandas("id_cliente
 botonfiltrarprecio.addEventListener("click", () => {mostrarComandas("precio")});
 botonfiltrarfecha.addEventListener("click", () => {mostrarComandas("id_pedido")});
 
+//Mostra les comandes de la BBDD
 async function mostrarComandas(filtro) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
@@ -119,6 +120,7 @@ async function mostrarComandas(filtro) {
     });
 }
 
+//Elimina una comanda de la BBDD
 async function eliminarComanda(id_comanda, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
@@ -147,6 +149,7 @@ async function eliminarComanda(id_comanda, clau) {
     })
 }
 
+//Inserta una comanda a la BBDD
 async function crearComanda(id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
@@ -175,6 +178,7 @@ async function crearComanda(id_client, descompte, localitat, codipostal, carrer,
     })
 }
 
+//Modifica una comanda de la BBDD
 async function modificarComanda(id_comanda, id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";

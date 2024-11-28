@@ -2,6 +2,7 @@
 include_once "config/dataBase.php";
 
 class UsuarioDAO {
+    //Obte les dades de un usuari segons el seu nom d'usuari
     public static function getUsuario($usuario) {
         try {
             $con = DataBase::connect();
@@ -29,6 +30,7 @@ class UsuarioDAO {
         
     }
 
+    //Registra un usuari en la base de dades i encripta la clau
     public static function insertaUsuari($nombre, $usuario, $contrasenya) {
         try {
             $clau = password_hash($contrasenya, PASSWORD_DEFAULT);

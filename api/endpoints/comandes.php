@@ -2,6 +2,7 @@
 include_once __DIR__ . "/../../config/dataBase.php";
 include_once __DIR__ . "/../../models/Comestible.php";
 
+//Mostra totes les comandes a la base de dades
 function mostrarTot($order) {
     try {
         $con = DataBase::connect();
@@ -46,6 +47,7 @@ function mostrarTot($order) {
     
 }
 
+//Elimina una comanda de la bbdd
 function eliminar($id) {
     try {
         $con = DataBase::connect();
@@ -67,6 +69,7 @@ function eliminar($id) {
     }
 }
 
+//Inserta una comanda a la BBDD
 function crear($id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $telefon, $preu) {
     try {
         $con = DataBase::connect();
@@ -84,6 +87,7 @@ function crear($id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $
 
 }
 
+//Modifica una comanda a la BBDD
 function modificar($id_comanda, $id_client, $descompte, $localitat, $codipostal, $carrer, $nom, $telefon, $preu) {
     try {
         $con = DataBase::connect();
@@ -101,6 +105,7 @@ function modificar($id_comanda, $id_client, $descompte, $localitat, $codipostal,
     }
 }
 
+//Moure aixo a un lloc correcte
 function clauAdmin() {
     return "080705";
 }

@@ -4,6 +4,7 @@ include_once("config/dataBase.php");
 include_once("models/Comestible.php");
 
 class ProductoDAO{
+    //Obte tots els productes aplicant o no categoria
     public static function getAll($categoria, $order = "id") {
         try {
             $con = DataBase::connect();
@@ -32,8 +33,8 @@ class ProductoDAO{
             throw $th;
         }
     }
-    
 
+    //Borrar
     public static function store($producto){
         $con = DataBase::connect();
         $stmt = $con->prepare("INSERT INTO camisas (nombre, talla, precio) VALUES (?,?,?);");
@@ -69,6 +70,7 @@ class ProductoDAO{
         $con->close();
     }
 
+    //Mostra les comandes que a realitzat el usuari
     public static function verPedidosCliente() {
         try {
             $con = DataBase::connect();
@@ -105,6 +107,7 @@ class ProductoDAO{
         }
     }
 
+    //Obte un producte segons la seva id
     public static function getProductoById($id) {
         try {
             $con = DataBase::connect();
@@ -129,6 +132,7 @@ class ProductoDAO{
         }
     }
 
+    //Borrar
     public static function destroy($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("DELETE FROM camisetas WHERE id = ?");

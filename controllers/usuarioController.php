@@ -4,31 +4,31 @@ include_once "models/UsuarioDAO.php";
 
 class usuarioController
 {
+    //Dirigeix a la pagina de inici de sessio
     public function iniciaSessio() {
-        //Dirigeix a la pagina de inici de sessio
         include_once "views/usuari/iniciaSessio.php";
     }
 
+    //Dirigeix a la pagina de registre
     public function registrarse() {
         include_once "views/usuari/registre.php";
     }
 
+    //Dirigeix a la pagina del perfil de usuari
     public function perfil() {
-        //Dirigeix a la pagina del perfil de usuari
         include_once "views/usuari/perfil.php";
     }
 
+    //Tanca la sessio del usuari
     public function tancaSessio() {
-        //Tanca la sessio
-
         session_start();
         session_destroy();
 
         header("Location:".url."usuario/iniciaSessio");
     }
 
+    //Inicia la sessio del usuari
     public function startSession($usuari, $contrasenya) {
-        //Inicia la sessio de l'usuari
         $usuarioDAO = new UsuarioDAO();
         $resultado = $usuarioDAO->getUsuario($usuari);
 
@@ -46,6 +46,7 @@ class usuarioController
         }
     }
 
+    //Registra a un usuari
     public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida, $imatge) {
         if ($contrasenya == $contrasenyarepetida) {
             echo "Creant conta...";
