@@ -41,11 +41,11 @@ class productoController{
         ];
         if (!isset($_COOKIE['carro'])) {
             $data = [$producte];
-            setcookie("carro", json_encode($data), time() + 500, "/");
+            setcookie("carro", json_encode($data), time() + 600, "/");
         } else {
             $data = json_decode($_COOKIE['carro'], true);
             $data[] = $producte;
-            setcookie("carro", json_encode($data), time() + 500, "/");
+            setcookie("carro", json_encode($data), time() + 600, "/");
         }
     }
 
@@ -89,7 +89,7 @@ class productoController{
         }
 
         if (isset($_COOKIE['carro'])) {
-            setcookie("carro", json_encode($data), time() + 500, "/");
+            setcookie("carro", json_encode($data), time() + 600, "/");
         }
     }
 
