@@ -1,6 +1,7 @@
 <?php
 //Totes les opcions de configuracio de usuari
 include_once "models/UsuarioDAO.php";
+include_once "controllers/adminController.php";
 
 class usuarioController
 {
@@ -22,6 +23,10 @@ class usuarioController
     //Tanca la sessio del usuari
     public function tancaSessio() {
         session_start();
+
+        $admin = new adminController;
+        $admin->registrarAccio("CloseSession");
+
         session_destroy();
 
         header("Location:".url."usuario/iniciaSessio");
@@ -40,6 +45,9 @@ class usuarioController
             $_SESSION['usuari'] = $resultado['usuario'];
             $_SESSION['nom'] = $resultado['nombre'];
 
+            $admin = new adminController();
+            $admin->registrarAccio("StartSession");
+
             header("Location: " . url . "usuario/perfil");
         } else {
             echo "Usuari o Contrasenya incorrecta :(";
@@ -49,13 +57,18 @@ class usuarioController
     //Registra a un usuari
     public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida, $imatge) {
         if ($contrasenya == $contrasenyarepetida) {
-            echo "Creant conta...";
             $usuariDAO = new UsuarioDAO();
             $usuariDAO->insertaUsuari($nom, $usuari, $contrasenya);
+
+            session_start();
+            $_SESSION['id'] = 0;
+
+            $admin = new adminController();
+            $admin->registrarAccio("CreateUser:$usuari");
+
+            session_destroy();
         } else {
             echo "Les Claus no coinsideixen :(";
         }
-
-        echo $usuari.$nom.$contrasenya.$contrasenyarepetida.$imatge;
     }
 }

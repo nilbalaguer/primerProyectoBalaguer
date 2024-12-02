@@ -1,6 +1,7 @@
 <?php
 
-include_once __DIR__ .  "/../models/ProductoDAO.php";
+include_once __DIR__ . "/../models/ProductoDAO.php";
+include_once __DIR__ . "/../controllers/adminController.php";
 
 class productoController{
     public function index(){
@@ -21,6 +22,10 @@ class productoController{
     public function finalitzarCompra($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos = [], $iddescuento = null) {
         $producto = new ProductoDAO();
         $producto->insertarPedido($idcliente, $localidad, $codigopostal, $calle, $nombre, $telefono, $productos, productoController::preuFinal() ,$iddescuento);
+        
+        $admin = new adminController();
+        $admin->registrarAccio("FinalitzarCompra");
+        
         header("Location: /usuario/perfil");
     }
 

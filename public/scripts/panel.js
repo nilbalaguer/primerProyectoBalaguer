@@ -1,6 +1,7 @@
 const botonmostrar = document.getElementById("buttonmostrarcomandes");
 const divContenido = document.getElementById("divdecontenidoadmin");
 const inputClau = document.getElementById("clauAdmin");
+const botonhistorial = document.getElementById("buttonmostrarhistorial");
 
 //Botones para filtrar
 const botonfiltrarusuario = document.getElementById("botonfiltrarusuario");
@@ -10,6 +11,10 @@ const botonfiltrarprecio = document.getElementById("botonfiltrarprecio");
 //Icono de carrega
 const iconoCargaAdmin = document.getElementById("iconoCargaAdmin");
 
+//Mostra el historial de accions de la pagina web
+botonhistorial.addEventListener("click", historial);
+
+//Botons de comandes
 botonmostrar.addEventListener("click", () => {mostrarComandas("")});
 botonfiltrarusuario.addEventListener("click", () => {mostrarComandas("id_cliente")});
 botonfiltrarprecio.addEventListener("click", () => {mostrarComandas("precio")});
@@ -200,6 +205,74 @@ async function modificarComanda(id_comanda, id_client, descompte, localitat, cod
         const parrafo = document.createElement("h2");
         parrafo.textContent = data;
         divContenido.appendChild(parrafo);
+
+    })
+    .catch(error => {
+        iconoCargaAdmin.style.display = "none";
+        document.body.innerHTML += `<p>Error: ${error.message}</p>`;
+        console.error("Error:", error);
+    })
+}
+
+async function historial() {
+    iconoCargaAdmin.style.display = "block";
+    divContenido.innerHTML = "";
+
+    fetch(`/api/api.php?historial&clau=${inputClau.value}`, { method: "GET" })
+    .then(response => {
+        iconoCargaAdmin.style.display = "none";
+        if (!response.ok) {
+            throw new Error("Error en la solicitud");
+        }
+        return response.json();
+    })
+    .then(data => {
+        iconoCargaAdmin.style.display = "none";
+
+        console.log(data);
+
+        const tabla = document.createElement("table");
+        tabla.className = "tablahistorial";
+        divContenido.appendChild(tabla);
+
+        //Titols de la taula
+        const fila = document.createElement("tr");
+        const id_registre = document.createElement("th");
+        id_registre.textContent = "ID_REGISTRE";
+        const id_client = document.createElement("th");
+        id_client.textContent = "ID_CLIENT";
+        const horaidia = document.createElement("th");
+        horaidia.textContent = "DATA";
+        const accio = document.createElement("th");
+        accio.textContent = "ACCIO";
+        fila.appendChild(id_registre);
+        fila.appendChild(id_client);
+        fila.appendChild(horaidia);
+        fila.appendChild(accio);
+        tabla.appendChild(fila);
+
+        data.data.forEach(item => {
+            const fila = document.createElement("tr");
+
+            // Mostrar una taula amb els elements
+            const id_registre = document.createElement("th");
+            id_registre.textContent = item.id_registro;
+            const id_client = document.createElement("td");
+            id_client.textContent = item.id_client;
+            const horaidia = document.createElement("td");
+            horaidia.textContent = item.data;
+            const accio = document.createElement("td");
+            accio.textContent = item.accio;
+
+            fila.appendChild(id_registre);
+            fila.appendChild(id_client);
+            fila.appendChild(horaidia);
+            fila.appendChild(accio);
+
+            tabla.appendChild(fila);
+        });
+
+        divContenido.appendChild(tabla);
 
     })
     .catch(error => {

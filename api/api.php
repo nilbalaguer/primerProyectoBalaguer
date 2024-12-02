@@ -1,5 +1,9 @@
 <?php
 include_once "endpoints/comandes.php";
+include_once "endpoints/historial.php";
+
+$comandes = new Comandes();
+$historial = new Historial();
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -40,17 +44,19 @@ if ($metodo == 'POST') {
     }
 } elseif ($metodo == 'GET') {
     if (isset($_GET['clau'])) {
-        if ($_GET['clau'] == clauAdmin()) {
+        if ($_GET['clau'] == $comandes->clauAdmin()) {
             if(isset($_GET['test'])) {
                 echo json_encode("Conexio Correcta Amb la API");
             } elseif (isset($_GET['comandes'])) {
-                echo mostrarTot($_GET['comandes']);
+                echo $comandes->mostrarTot($_GET['comandes']);
             } elseif (isset($_GET['eliminar'])&&isset($_GET['clau'])) {
-                echo eliminar($_GET['eliminar']);
+                echo $comandes->eliminar($_GET['eliminar']);
             } elseif (isset($_GET['crear'])) {
-                echo crear($_GET['id_client'], $_GET['descompte'], $_GET['localitat'], $_GET['codipostal'], $_GET['carrer'], $_GET['nom'], $_GET['telefon'], $_GET['preu']);
+                echo $comandes->crear($_GET['id_client'], $_GET['descompte'], $_GET['localitat'], $_GET['codipostal'], $_GET['carrer'], $_GET['nom'], $_GET['telefon'], $_GET['preu']);
             } elseif (isset($_GET['modificar'])) {
-                echo modificar($_GET['id_comanda'], $_GET['id_client'], $_GET['descompte'], $_GET['localitat'], $_GET['codipostal'], $_GET['carrer'], $_GET['nom'], $_GET['telefon'], $_GET['preu']);
+                echo $comandes->modificar($_GET['id_comanda'], $_GET['id_client'], $_GET['descompte'], $_GET['localitat'], $_GET['codipostal'], $_GET['carrer'], $_GET['nom'], $_GET['telefon'], $_GET['preu']);
+            } elseif (isset($_GET['historial'])) {
+                echo $historial->mostrar();
             } else {
                 echo json_encode("Operacio Desconeguda");
             }

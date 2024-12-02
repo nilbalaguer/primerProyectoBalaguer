@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ .  "/../models/AdminDAO.php";
 
 class adminController
 {
@@ -10,5 +11,9 @@ class adminController
     //Dirigeix al adimn al panell d'administracio
     public function panelAdmin() {
         include_once "views/admin/panel.html";
+    }
+
+    public function registrarAccio($accio) {
+        AdminDAO::insertarAccio($accio);
     }
 }

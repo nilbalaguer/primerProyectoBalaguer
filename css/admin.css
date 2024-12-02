@@ -24,3 +24,14 @@
     height: 5rem;
     width: 5rem;
 }
+
+.tablahistorial {
+    min-width: 100%;
+    border-collapse: separate;
+}
+
+.tablahistorial tr, .tablahistorial td, .tablahistorial th {
+    border: 1px solid black;
+    padding: 10px;
+    min-width: 100%;
+}
