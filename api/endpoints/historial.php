@@ -9,7 +9,7 @@ class Historial {
             $con = DataBase::connect();
     
             $stmt = "";
-            $stmt = $con->prepare("SELECT * FROM historial");
+            $stmt = $con->prepare("SELECT * FROM historial ORDER BY fecha DESC");
     
             $stmt->execute();
             $result = $stmt->get_result();

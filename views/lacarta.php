@@ -5,7 +5,11 @@ $controllercarta = new productoController();
 if (isset($_GET['id'])) {
     $controllercarta->afegirProducte($_GET['id'], $_GET['preu'], $_GET['nom']);
 
-    header("Location: ".url."producto/lacarta");
+    if (isset($_GET['categoria'])) {
+        header("Location: ".url."producto/lacarta?categoria=".$_GET['categoria']);
+    } else {
+        header("Location: ".url."producto/lacarta");
+    }
 } elseif (isset($_GET['eliminar'])) {
     $controllercarta->eliminarProducte($_GET['eliminar']);
 
@@ -90,7 +94,7 @@ if (isset($_GET['categoria'])) {
                         $temporalId = $i + $j;
                         if ($temporalId >= count($productes)) break;
                         ?>
-                        <div class="col">
+                        <div class="col marcoproducto">
                             <img class="cartaimages" src="/img/burgers/<?=$productes[$temporalId]->getImagen()?>.webp" alt="hamburgesa">
                             <h3><?=$productes[$temporalId]->getNombre()?></h3>
                             <div class="d-flex justify-content-around">
@@ -99,6 +103,9 @@ if (isset($_GET['categoria'])) {
                                     <input hidden name="id" value="<?=$productes[$temporalId]->getId()?>">
                                     <input hidden name="preu" value="<?=$productes[$temporalId]->getPrecio()?>">
                                     <input hidden name="nom" value="<?=$productes[$temporalId]->getNombre()?>">
+                                    <?php if (isset($_GET['categoria'])) {
+                                        echo '<input hidden name="categoria" value="'.$_GET['categoria'].'">';
+                                    }?>
                                     <label for="submit<?=$productes[$temporalId]->getId()?>"><img src='/img/plus.png' alt='+'></label>
                                     <input hidden id="submit<?=$productes[$temporalId]->getId()?>" class="plusimage" type="submit" value="+" alt="Afegir">
                                 </form>

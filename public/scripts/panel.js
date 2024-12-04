@@ -2,6 +2,8 @@ const botonmostrar = document.getElementById("buttonmostrarcomandes");
 const divContenido = document.getElementById("divdecontenidoadmin");
 const inputClau = document.getElementById("clauAdmin");
 const botonhistorial = document.getElementById("buttonmostrarhistorial");
+const botonmostrarproductes = document.getElementById("buttonmostrarproductes");
+const botonmostrarusuaris = document.getElementById("buttonmostrarusuaris");
 
 //Botones para filtrar
 const botonfiltrarusuario = document.getElementById("botonfiltrarusuario");
@@ -13,6 +15,12 @@ const iconoCargaAdmin = document.getElementById("iconoCargaAdmin");
 
 //Mostra el historial de accions de la pagina web
 botonhistorial.addEventListener("click", historial);
+
+//Mostrar els productes de la web
+botonmostrarproductes.addEventListener("click", () => {mostrarProducte("", inputClau.value)});
+
+//Mostrar els usuaris
+botonmostrarusuaris.addEventListener("click", () => {mostrarUsuari("", inputClau.value)});
 
 //Botons de comandes
 botonmostrar.addEventListener("click", () => {mostrarComandas("")});
@@ -130,7 +138,7 @@ async function eliminarComanda(id_comanda, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
 
-    fetch(`/api/api.php?eliminar=${id_comanda}&clau=${clau}`, { method: "GET" })
+    fetch(`/api/api.php?eliminarComanda=${id_comanda}&clau=${clau}`, { method: "GET" })
     .then(response => {
         iconoCargaAdmin.style.display = "none";
         if (!response.ok) {
@@ -159,7 +167,7 @@ async function crearComanda(id_client, descompte, localitat, codipostal, carrer,
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
 
-    fetch(`/api/api.php?crear&clau=${inputClau.value}&id_client=${id_client}&descompte=${descompte}&localitat=${localitat}&codipostal=${codipostal}&carrer=${carrer}&nom=${nom}&telefon=${telefon}&preu=${preu}`, { method: "GET" })
+    fetch(`/api/api.php?crearComanda&clau=${inputClau.value}&id_client=${id_client}&descompte=${descompte}&localitat=${localitat}&codipostal=${codipostal}&carrer=${carrer}&nom=${nom}&telefon=${telefon}&preu=${preu}`, { method: "GET" })
     .then(response => {
         iconoCargaAdmin.style.display = "none";
         if (!response.ok) {
@@ -190,7 +198,7 @@ async function modificarComanda(id_comanda, id_client, descompte, localitat, cod
 
     console.log(id_comanda, id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu);
 
-    fetch(`/api/api.php?modificar&clau=${inputClau.value}&id_comanda=${id_comanda}&id_client=${id_client}&descompte=${descompte}&localitat=${localitat}&codipostal=${codipostal}&carrer=${carrer}&nom=${nom}&telefon=${telefon}&preu=${preu}`, { method: "GET" })
+    fetch(`/api/api.php?modificarComanda&clau=${inputClau.value}&id_comanda=${id_comanda}&id_client=${id_client}&descompte=${descompte}&localitat=${localitat}&codipostal=${codipostal}&carrer=${carrer}&nom=${nom}&telefon=${telefon}&preu=${preu}`, { method: "GET" })
     .then(response => {
         iconoCargaAdmin.style.display = "none";
         if (!response.ok) {
@@ -250,27 +258,38 @@ async function historial() {
         fila.appendChild(horaidia);
         fila.appendChild(accio);
         tabla.appendChild(fila);
+        try {
+            data.data.forEach(item => {
+                const fila = document.createElement("tr");
+    
+                // Mostrar una taula amb els elements
+                const id_registre = document.createElement("th");
+                id_registre.textContent = item.id_registro;
+                const id_client = document.createElement("td");
+                id_client.textContent = item.id_client;
+                const horaidia = document.createElement("td");
+                horaidia.textContent = item.data;
+                const accio = document.createElement("td");
+                accio.textContent = item.accio;
+    
+                fila.appendChild(id_registre);
+                fila.appendChild(id_client);
+                fila.appendChild(horaidia);
+                fila.appendChild(accio);
+    
+                tabla.appendChild(fila);
+            });
 
-        data.data.forEach(item => {
+        } catch (error) {
             const fila = document.createElement("tr");
 
-            // Mostrar una taula amb els elements
-            const id_registre = document.createElement("th");
-            id_registre.textContent = item.id_registro;
-            const id_client = document.createElement("td");
-            id_client.textContent = item.id_client;
-            const horaidia = document.createElement("td");
-            horaidia.textContent = item.data;
-            const accio = document.createElement("td");
-            accio.textContent = item.accio;
+            const respuesta = document.createElement("th");
+            respuesta.textContent = data;
 
-            fila.appendChild(id_registre);
-            fila.appendChild(id_client);
-            fila.appendChild(horaidia);
-            fila.appendChild(accio);
+            fila.appendChild(respuesta)
 
             tabla.appendChild(fila);
-        });
+        }
 
         divContenido.appendChild(tabla);
 
