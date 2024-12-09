@@ -96,7 +96,14 @@ class ProductoDAO{
                     $producto = ProductoDAO::getProductoById($row1['id_producto']);
                     $pedidos .= "<div class='productoenperfildiv'><img class='comandaimagesperfil' src='/img/burgers/".$producto[0]->getImagen().".webp' alt='imatge producte'><p>".$producto[0]->getNombre()."</p><p>".$producto[0]->getPrecio()."€</p></div>";
                 }
-                $pedidos .= "</div></div><div class='divprecioperfil'><h2>".$row['precio']." €</h2></div></div>";
+
+                $descompte = ProductoDAO::obtindreDescompte($row['id_descuento']);
+                if ($descompte != null) {
+                    $pedidos .= "</div></div><div class='divprecioperfil'><h2>".number_format($row['precio']-$row['precio']*$descompte/100, 2)." €</h2></div></div>";
+                } else {
+                    $pedidos .= "</div></div><div class='divprecioperfil'><h2>".number_format($row['precio'], 2)." €</h2></div></div>";
+                }
+                
             }
     
             $con->close();
@@ -126,6 +133,31 @@ class ProductoDAO{
     
             $con->close();
             return $productos;
+        } catch (\Throwable $th) {
+            echo "<p style='font-size: 200%; font-weight: bold; color: red;'>Els nostres servidors no estan disponibles :(</p><p>Lamentem les molesties</p>";
+            throw $th;
+        }
+    }
+
+    public static function obtindreDescompte($id) {
+        try {
+            $con = DataBase::connect();
+            
+            $stmt = $con->prepare("SELECT * FROM descuentos WHERE codigo = ?");
+            $stmt->bind_param("d", $id);
+    
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            $descuento = $result->fetch_assoc();
+    
+            $con->close();
+
+            if ($descuento == null) {
+                return null;
+            }
+
+            return $descuento["porcentaje"];
         } catch (\Throwable $th) {
             echo "<p style='font-size: 200%; font-weight: bold; color: red;'>Els nostres servidors no estan disponibles :(</p><p>Lamentem les molesties</p>";
             throw $th;

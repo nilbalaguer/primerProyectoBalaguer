@@ -25,6 +25,8 @@ class productoController{
         
         $admin = new adminController();
         $admin->registrarAccio("FinalitzarCompra");
+
+        setcookie("carro", json_encode("hola"), time() + 0, "/");
         
         header("Location: /usuario/perfil");
     }
@@ -60,7 +62,7 @@ class productoController{
         $resultado = "<ol>";
 
         foreach ($data as $variable) {
-            $resultado .= "<li>".$variable['nom']." ".$variable['preu']." € <a href='?eliminar=".$variable['id']."'><img src='/img/minus.png' alt='-'></a></li>";
+            $resultado .= "<li>".$variable['nom']." ".$variable['preu']." € <a href='?eliminar=".$variable['id']."'><img src='/img/minus.webp' alt='-'></a></li>";
         }
 
         return $resultado."</ol>";
@@ -110,6 +112,17 @@ class productoController{
         return $preu + $preu * 0.10." €";
     }
 
+    public function preuFinalSenseIva() {
+        $data = json_decode($_COOKIE['carro'], true);
+        $preu = 0;
+
+        foreach ($data as $variable) {
+            $preu += $variable['preu'];
+        }
+
+        return $preu." €";
+    }
+
     //Aquesta funcio borra las cookies (Raons de desenvolupament)
     public function borrarCookies() {
         if (isset($_SERVER['HTTP_COOKIE'])) {
@@ -123,6 +136,11 @@ class productoController{
         }
 
         header("Location: ".url."producto/home");
+    }
+
+    public function obtindreDescompte($id_descompte) {
+        $producto = new ProductoDAO();
+        $producto->obtindreDescompte($id_descompte);
     }
     
     //Dirigeix a la pagina home

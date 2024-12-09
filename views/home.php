@@ -50,7 +50,7 @@
 <div id="divDescobreix">
     <div class="row mb-4">
         <div class="col text-center">
-            <img src="/img/coin.png" class="img-fluid" alt="Moneda">
+            <img src="/img/coin.webp" class="img-fluid" alt="Moneda">
         </div>
         <div class="col text-center">
             <h2 class="heading2 no-wrap d-none d-lg-block">DESCOBREIX EL NOSTRE MENJAR</h2>
@@ -83,7 +83,7 @@
             <a href="<?=url?>producto/lacarta" class="greenbutton">DEMANA ARA!</a>
         </div>
         <div class="col text-center">
-            <img src="/img/coin.png" class="img-fluid" alt="Moneda">
+            <img src="/img/coin.webp" class="img-fluid" alt="Moneda">
         </div>
     </div>
 </div>

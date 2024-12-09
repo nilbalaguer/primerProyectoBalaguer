@@ -1,3 +1,28 @@
+class Producto {
+    constructor(id, nom, descripcio, preu, imatge, categoria) {
+        this.id = id;
+        this.nom = nom;
+        this.descripcio = descripcio;
+        this.preu = preu;
+        this.imatge = imatge;
+        this.categoria = categoria;
+    }
+
+    mostrarProducto() {
+        const parrafo = document.createElement("p");
+        parrafo.className = "recuadreComandaAdmin";
+        parrafo.textContent = `ID: ${this.id} Nom: ${this.nom} Descripcio: ${this.descripcio} Preu: ${this.preu} Imatge: ${this.imatge} Categoria: ${this.categoria}`;
+
+        const borrarlink = document.createElement("button");
+        borrarlink.id = `borrarProducte${this.id}`;
+        borrarlink.textContent = "Eliminar Producte";
+        borrarlink.addEventListener("click", () => { this.eliminarProducto(this.id); });
+        
+        parrafo.appendChild(borrarlink);
+        divContenido.appendChild(parrafo);
+    }
+}
+
 async function mostrarProducte(filtro, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
@@ -52,28 +77,16 @@ async function mostrarProducte(filtro, clau) {
         iconoCargaAdmin.style.display = "none";
         try {
             data.data.forEach(item => {
-                // Acceder a las propiedades de cada elemento
-                const id = item.id;
-                const nom = item.nom;
-                const descripcio = item.descripcio;
-                const preu = item.preu;
-                const imatge = item.imatge;
-                const categoria = item.categoria;
-
-                //id, nom, descripcio, preu, imatge, categoria
-    
-                console.log(`ID: ${id} Nom: ${nom} Descripcio: ${descripcio} Preu: ${preu} Imatge: ${imatge} Categoria: ${categoria}`);
-    
-                // Crear elementos para mostrar los datos en el DOM
-                const parrafo = document.createElement("p");
-                parrafo.className = "recuadreComandaAdmin";
-                parrafo.textContent = `ID: ${id} Nom: ${nom} Descripcio: ${descripcio} Preu: ${preu} Imatge: ${imatge} Categoria: ${categoria}`;
-                const borrarlink = document.createElement("button");
-                borrarlink.id = `borrarProducte${id}`;
-                borrarlink.textContent = "Eliminar Producte";
-                borrarlink.addEventListener("click", () => {eliminarProducte(id, clau)});
-                parrafo.appendChild(borrarlink);
-                divContenido.appendChild(parrafo);
+                const producto = new Producto(
+                    item.id,
+                    item.nom,
+                    item.descripcio,
+                    item.preu,
+                    item.imatge,
+                    item.categoria
+                );
+            
+                producto.mostrarProducto();
             });
         } catch (error) {
             const parrafo = document.createElement("h2");

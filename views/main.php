@@ -16,7 +16,7 @@
 <body>
     <header>
         <div>
-            <img id="logoimageheader" src="/img/FoodCraft.png" alt="FOODCRAFT">
+            <img id="logoimageheader" src="/img/FoodCraft.webp" alt="FOODCRAFT">
         </div>
         <div id="centrallinks">
             <a href="<?=url?>producto/home">INICI</a>

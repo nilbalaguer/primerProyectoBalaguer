@@ -17,7 +17,7 @@
     <form id="formulariocomanda" class="container" method="post" action="comanda">
         <div class="text-center d-flex justify-content-center">
             <h2 class="heading2">COMANDA</h2>
-            <img src="/img/coin.png">
+            <img src="/img/coin.webp">
         </div>
         <div class="row" id="divform">
             <div class="col">

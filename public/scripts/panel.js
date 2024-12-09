@@ -1,3 +1,24 @@
+class comanda {
+    constructor(id_comanda, id_client, descompte, localitat, codipostal, carrer, nom, telefon, preu) {
+        this.id_comanda = id_comanda;
+        this.id_client = id_client;
+        this.descompte = descompte;
+        this.localitat = localitat;
+        this.codipostal = codipostal;
+        this.carrer = carrer;
+        this.nom = nom;
+        this.telefon = telefon;
+        this.preu = preu;
+    }
+
+    obtenerDetalles() {
+        return `Id_comanda: ${this.id_comanda}, Id_client: ${this.id_client}, Descompte: ${this.descompte}, Localitat: ${this.localitat}, Codi Postal: ${this.codipostal}, Carrer: ${this.carrer}, Nom Client: ${this.nom}, Telefon: ${this.telefon}, Preu: ${this.preu}`;
+    }
+}
+
+
+
+
 const botonmostrar = document.getElementById("buttonmostrarcomandes");
 const divContenido = document.getElementById("divdecontenidoadmin");
 const inputClau = document.getElementById("clauAdmin");
@@ -149,30 +170,32 @@ async function mostrarComandas(filtro) {
             iconoCargaAdmin.style.display = "none";
             try {
                 data.data.forEach(item => {
-                    // Acceder a las propiedades de cada elemento
-                    const id_comanda = item.id_comanda;
-                    const id_client = item.id_client;
-                    const descompte = item.descompte;
-                    const localitat = item.localitat;
-                    const codipostal = item.codipostal;
-                    const carrer = item.carrer;
-                    const nom = item.nom;
-                    const telefon = item.telefon;
-                    let preu = item.preu;
-    
-                    preu = preu*listaprecios[seleccionadorpais.value];
-        
-                    // Crear elementos para mostrar los datos en el DOM
+                    let comandaInstancia = new comanda(
+                        item.id_comanda,
+                        item.id_client,
+                        item.descompte,
+                        item.localitat,
+                        item.codipostal,
+                        item.carrer,
+                        item.nom,
+                        item.telefon,
+                        item.preu * listaprecios[seleccionadorpais.value]
+                    );
+                
                     const parrafo = document.createElement("p");
                     parrafo.className = "recuadreComandaAdmin";
-                    parrafo.textContent = `Id_comanda: ${id_comanda}, Id_client: ${id_client}, Descompte: ${descompte}, Localitat: ${localitat}, Codi Postal: ${codipostal} Carrer: ${carrer} Nom Client: ${nom} Telefon: ${telefon} Preu: ${preu}`;
+                    parrafo.textContent = comandaInstancia.obtenerDetalles();
+                
                     const borrarlink = document.createElement("button");
-                    borrarlink.id = `borrarComanda${id_comanda}`;
+                    borrarlink.id = `borrarComanda${comandaInstancia.id_comanda}`;
                     borrarlink.textContent = "Eliminar Comanda";
-                    borrarlink.addEventListener("click", () => {eliminarComanda(id_comanda, inputClau.value)});
+                    borrarlink.addEventListener("click", () => {eliminarComanda(comandaInstancia.id_comanda, inputClau.value)});
+                
                     parrafo.appendChild(borrarlink);
+                
                     divContenido.appendChild(parrafo);
                 });
+                
             } catch (error) {
                 const parrafo = document.createElement("h2");
                 parrafo.textContent = "Error Clau Incorrecta"+error;

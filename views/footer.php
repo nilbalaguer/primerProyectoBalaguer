@@ -11,8 +11,8 @@
     </div>
     <div id="seconddivfooter">
         <div class="footerfoodimage">
-            <img class="footerfoodimage" src="/img/beansbucket.png" alt="hamburgesa">
-            <img class="footerfoodimage" src="/img/minecrafthamburger.png" alt="beans">
+            <img class="footerfoodimage" src="/img/beansbucket.webp" alt="hamburgesa">
+            <img class="footerfoodimage" src="/img/minecrafthamburger.webp" alt="beans">
         </div>
         <div id="footerlinksroot">
             <div>
@@ -46,15 +46,15 @@
             </div>
         </div>
         <div>
-            <img id="cautionbestfoodimage" src="/img/cautionbestfood.png" alt="Caution Best Food">
+            <img id="cautionbestfoodimage" src="/img/cautionbestfood.webp" alt="Caution Best Food">
         </div>
     </div>
     <div id="thirddivfooter">
-        <a>Il·luminació</a>
+        <a>L'IVA no esta inclos a la carta</a>
         <a>Privacitat i Cookies</a>
         <a>Termes d'ús</a>
         <a>© 2024 FOODCRAFT</a>
-        <img class="d-none d-xl-block" src="/img/FoodCraft.png" alt="FOODCRAFT">
+        <img class="d-none d-xl-block" src="/img/FoodCraft.webp" alt="FOODCRAFT">
     </div>
 </footer>
 </body>

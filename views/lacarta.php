@@ -43,11 +43,13 @@ if (isset($_GET['categoria'])) {
         <?php if (isset($_COOKIE['carro'])) {?>
         <div id="ventana">
             <div id="ventana-header"><h2 class="heading2">COMANDA</h2></div>
-            <?php
-                echo $controllercarta->veureCarro();
-                echo "<br><br>Total: ".$controllercarta->preuFinal()."<br>";
-            ?>
-            <a class="smallgreenbutton" id="botonventanitacomanda" href="<?=url?>producto/comanda">FINALITZA LA COMPRA</a>
+            <div id="botonventanitacomanda">
+                <?php
+                    echo $controllercarta->veureCarro();
+                    echo "<br><br>Total: ".$controllercarta->preuFinalSenseIva()."<br>";
+                ?>
+            </div>
+            <a class="smallgreenbutton" href="<?=url?>producto/comanda">FINALITZA LA COMPRA</a>
         </div>
 
         <script>
@@ -106,7 +108,7 @@ if (isset($_GET['categoria'])) {
                                     <?php if (isset($_GET['categoria'])) {
                                         echo '<input hidden name="categoria" value="'.$_GET['categoria'].'">';
                                     }?>
-                                    <label for="submit<?=$productes[$temporalId]->getId()?>"><img src='/img/plus.png' alt='+'></label>
+                                    <label for="submit<?=$productes[$temporalId]->getId()?>"><img src='/img/plus.webp' alt='+'></label>
                                     <input hidden id="submit<?=$productes[$temporalId]->getId()?>" class="plusimage" type="submit" value="+" alt="Afegir">
                                 </form>
                             </div>
