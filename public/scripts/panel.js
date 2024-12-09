@@ -83,54 +83,109 @@ async function mostrarComandas(filtro) {
     divContenido.appendChild(botoncrearcomanda);
     divContenido.appendChild(botonmodificarcomanda);
 
-    fetch(`/api/api.php?comandes=${filtro}&clau=${inputClau.value}`, { method: "GET" })
-    .then(response => {
-        iconoCargaAdmin.style.display = "none";
-        if (!response.ok) {
-            throw new Error("Error en la solicitud");
-        }
-        return response.json();
-    })
-    .then(data => {
-        iconoCargaAdmin.style.display = "none";
-        try {
-            data.data.forEach(item => {
-                // Acceder a las propiedades de cada elemento
-                const id_comanda = item.id_comanda;
-                const id_client = item.id_client;
-                const descompte = item.descompte;
-                const localitat = item.localitat;
-                const codipostal = item.codipostal;
-                const carrer = item.carrer;
-                const nom = item.nom;
-                const telefon = item.telefon;
-                const preu = item.preu;
-    
-                console.log(`Id_comanda: ${id_comanda}, Id_client: ${id_client}, Descompte: ${descompte}, Localitat: ${localitat}, Codi Postal: ${codipostal} Carrer: ${carrer} Nom Client: ${nom} Telefon: ${telefon} Preu: ${preu}`);
-    
-                // Crear elementos para mostrar los datos en el DOM
-                const parrafo = document.createElement("p");
-                parrafo.className = "recuadreComandaAdmin";
-                parrafo.textContent = `Id_comanda: ${id_comanda}, Id_client: ${id_client}, Descompte: ${descompte}, Localitat: ${localitat}, Codi Postal: ${codipostal} Carrer: ${carrer} Nom Client: ${nom} Telefon: ${telefon} Preu: ${preu}`;
-                const borrarlink = document.createElement("button");
-                borrarlink.id = `borrarComanda${id_comanda}`;
-                borrarlink.textContent = "Eliminar Comanda";
-                borrarlink.addEventListener("click", () => {eliminarComanda(id_comanda, inputClau.value)});
-                parrafo.appendChild(borrarlink);
-                divContenido.appendChild(parrafo);
+    let listaprecios = {
+        "EUR": 1,
+    };
+
+    const seleccionadorpais = document.createElement("select");
+    seleccionadorpais.id = "selectorpais";
+    seleccionadorpais.value = "EUR";
+
+    const botoncargar = document.createElement("button");
+    botoncargar.textContent = "Cargar Comandes";
+
+    botoncargar.addEventListener("click", loadcomandas);
+
+    divContenido.appendChild(botoncargar)
+
+    try {
+        fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_W1nZUy0xPrQvvJ5OHbIq1IuaLvgdczZq1CmHv5n5&currencies=AUD%2CBGN%2CBRL%2CCAD%2CCHF%2CCNY%2CCZK%2CDKK%2CEUR%2CGBP%2CHKD%2CHRK%2CHUF%2CIDR%2CILS%2CINR%2CISK%2CJPY%2CKRW%2CMXN%2CMYR%2CNOK%2CNZD%2CPHP%2CPLN%2CRON%2CRUB%2CSEK%2CSGD%2CTHB%2CTRY%2CUSD%2CZAR&base_currency=EUR`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error en la solicitud");
+            }
+            return response.json();
+        })
+        .then(data => {
+            listaprecios = data.data;
+
+            Object.keys(listaprecios).forEach(moneda => {
+                const opcion = document.createElement("option");
+                opcion.value = moneda;
+                opcion.textContent = moneda; // Muestra el código de la moneda
+                seleccionadorpais.appendChild(opcion);
             });
-        } catch (error) {
-            const parrafo = document.createElement("h2");
-            parrafo.textContent = "Error Clau Incorrecta";
-            divContenido.appendChild(parrafo);
-        }
+
+            console.log(listaprecios);
+        })
+        .catch(error => {
+            iconoCargaAdmin.style.display = "none";
+            document.body.innerHTML += `<p>Error: ${error.message}</p>`;
+            console.error("Error:", error);
+        });
+    } catch (error) {
+        console.log("No s'ha pogut carregar la api de conversio de monedes");
+    }
+
+    iconoCargaAdmin.style.display = "none";
+    seleccionadorpais.value="EUR";
+
+    divContenido.appendChild(seleccionadorpais);
+
+    function loadcomandas() {
+        iconoCargaAdmin.style.display = "block";
+        divContenido.innerHTML = "";
+    
+    
+        fetch(`/api/api.php?comandes=${filtro}&clau=${inputClau.value}`, { method: "GET" })
+        .then(response => {
+            iconoCargaAdmin.style.display = "none";
+            if (!response.ok) {
+                throw new Error("Error en la solicitud");
+            }
+            return response.json();
+        })
+        .then(data => {
+            iconoCargaAdmin.style.display = "none";
+            try {
+                data.data.forEach(item => {
+                    // Acceder a las propiedades de cada elemento
+                    const id_comanda = item.id_comanda;
+                    const id_client = item.id_client;
+                    const descompte = item.descompte;
+                    const localitat = item.localitat;
+                    const codipostal = item.codipostal;
+                    const carrer = item.carrer;
+                    const nom = item.nom;
+                    const telefon = item.telefon;
+                    let preu = item.preu;
+    
+                    preu = preu*listaprecios[seleccionadorpais.value];
         
-    })
-    .catch(error => {
-        iconoCargaAdmin.style.display = "none";
-        document.body.innerHTML += `<p>Error: ${error.message}</p>`;
-        console.error("Error:", error);
-    });
+                    // Crear elementos para mostrar los datos en el DOM
+                    const parrafo = document.createElement("p");
+                    parrafo.className = "recuadreComandaAdmin";
+                    parrafo.textContent = `Id_comanda: ${id_comanda}, Id_client: ${id_client}, Descompte: ${descompte}, Localitat: ${localitat}, Codi Postal: ${codipostal} Carrer: ${carrer} Nom Client: ${nom} Telefon: ${telefon} Preu: ${preu}`;
+                    const borrarlink = document.createElement("button");
+                    borrarlink.id = `borrarComanda${id_comanda}`;
+                    borrarlink.textContent = "Eliminar Comanda";
+                    borrarlink.addEventListener("click", () => {eliminarComanda(id_comanda, inputClau.value)});
+                    parrafo.appendChild(borrarlink);
+                    divContenido.appendChild(parrafo);
+                });
+            } catch (error) {
+                const parrafo = document.createElement("h2");
+                parrafo.textContent = "Error Clau Incorrecta"+error;
+                divContenido.appendChild(parrafo);
+            }
+            
+        })
+        .catch(error => {
+            iconoCargaAdmin.style.display = "none";
+            document.body.innerHTML += `<p>Error: ${error.message}</p>`;
+            console.error("Error:", error);
+        });
+    }
 }
 
 //Elimina una comanda de la BBDD

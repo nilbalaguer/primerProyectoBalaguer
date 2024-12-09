@@ -96,7 +96,7 @@ class ProductoDAO{
                     $producto = ProductoDAO::getProductoById($row1['id_producto']);
                     $pedidos .= "<div class='productoenperfildiv'><img class='comandaimagesperfil' src='/img/burgers/".$producto[0]->getImagen().".webp' alt='imatge producte'><p>".$producto[0]->getNombre()."</p><p>".$producto[0]->getPrecio()."€</p></div>";
                 }
-                $pedidos .= "</div></div></div>";
+                $pedidos .= "</div></div><div class='divprecioperfil'><h2>".$row['precio']." €</h2></div></div>";
             }
     
             $con->close();

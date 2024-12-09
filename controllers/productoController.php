@@ -46,11 +46,11 @@ class productoController{
         ];
         if (!isset($_COOKIE['carro'])) {
             $data = [$producte];
-            setcookie("carro", json_encode($data), time() + 600, "/");
+            setcookie("carro", json_encode($data), time() + 1000, "/");
         } else {
             $data = json_decode($_COOKIE['carro'], true);
             $data[] = $producte;
-            setcookie("carro", json_encode($data), time() + 600, "/");
+            setcookie("carro", json_encode($data), time() + 1000, "/");
         }
     }
 
@@ -94,7 +94,7 @@ class productoController{
         }
 
         if (isset($_COOKIE['carro'])) {
-            setcookie("carro", json_encode($data), time() + 600, "/");
+            setcookie("carro", json_encode($data), time() + 1000, "/");
         }
     }
 
@@ -107,7 +107,7 @@ class productoController{
             $preu += $variable['preu'];
         }
 
-        return $preu." €";
+        return $preu + $preu * 0.10." €";
     }
 
     //Aquesta funcio borra las cookies (Raons de desenvolupament)

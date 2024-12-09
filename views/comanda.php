@@ -50,7 +50,7 @@
                 <?php
                     if (isset($_COOKIE['carro'])) {
                         echo $controllercomanda->veureCarro();
-                        echo "<br><br>Total: ".$controllercomanda->preuFinal();
+                        echo "<br><br>Total: ".$controllercomanda->preuFinal(). "<br><p>Amb IVA inclos</p>";
                     } else {
                         echo "No has afegit res al carro";
                     }
