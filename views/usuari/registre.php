@@ -3,7 +3,7 @@
 
     if (isset($_POST['usuario'])) {
         $session = new usuarioController();
-        $session->createUser($_POST['usuario'], $_POST['nombre'], $_POST['contrasenya'], $_POST['contrasenyarepetida'], $_POST['imagen']);
+        $session->createUser($_POST['usuario'], $_POST['nombre'], $_POST['contrasenya'], $_POST['contrasenyarepetida']);
     }
 ?>
 
@@ -18,23 +18,19 @@
         <form action="/usuario/registrarse" method="post">
             <label>Nom d'usuari:</label>
             <br>
-            <input name="usuario">
+            <input name="usuario" required>
             <br><br>
             <label>Nom complet:</label>
             <br>
-            <input name="nombre">
+            <input name="nombre" required>
             <br><br>
             <label>Clau d'acces:</label>
             <br>
-            <input type="password" name="contrasenya">
+            <input type="password" name="contrasenya" required>
             <br><br>
             <label>Repeteix la clau:</label>
             <br>
-            <input type="password" name="contrasenyarepetida">
-            <br><br>
-            <label>Imatge de Perfil:</label>
-            <br>
-            <input type="file" name="imagen">
+            <input type="password" name="contrasenyarepetida" required>
             <br><br>
             <input class="greenbutton" type="submit" value="Registrarse">
         </form>

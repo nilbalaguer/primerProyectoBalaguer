@@ -18,11 +18,11 @@
         <form action="/usuario/iniciaSessio" method="post">
             <label>Usuari:</label>
             <br>
-            <input name="usuario">
+            <input name="usuario" required>
             <br><br>
             <label>Clau d'acces:</label>
             <br>
-            <input type="password" name="contrasenya">
+            <input type="password" name="contrasenya" required>
             <br><br>
             <input class="greenbutton" type="submit" value="Entrar">
         </form>

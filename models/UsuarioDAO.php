@@ -39,10 +39,8 @@ class UsuarioDAO {
             $stmt = $con->prepare("INSERT INTO clientes (nombre, usuario, contrasenya) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $nombre, $usuario, $clau);
             
-            if ($stmt->execute()) {
-                echo "Execucio efectiva";
-            } else {
-                echo "caca";
+            if (!$stmt->execute()) {
+                echo "Error";
             }
 
             $stmt->close();

@@ -4,7 +4,7 @@ require_once "public/utils/protection.php";
 
 <div id="gridprofile">
     <div id="lateralperfil">
-        <img id="fotoperfil" src="<?=url?>img/users/<?=$_SESSION['usuari'];?>.png" alt="Foto de perfil">
+        <img id="fotoperfil" src="<?=url?>img/users/user<?=random_int(1,8)?>.png" alt="Foto de perfil">
         <br>
         <h2 id="nomperfil"><?=$_SESSION['usuari'];?></h2>
         <br>

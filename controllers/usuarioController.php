@@ -5,6 +5,10 @@ include_once "controllers/adminController.php";
 
 class usuarioController
 {
+    public function index() {
+        usuarioController::perfil();
+    }
+
     //Dirigeix a la pagina de inici de sessio
     public function iniciaSessio() {
         include_once "views/usuari/iniciaSessio.php";
@@ -50,25 +54,32 @@ class usuarioController
 
             header("Location: " . url . "usuario/perfil");
         } else {
-            echo "Usuari o Contrasenya incorrecta :(";
+            echo "<div class='alert alert-danger'><h2>Usuari o Contrasenya incorrecta :(</h2></div>";
         }
     }
 
     //Registra a un usuari
-    public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida, $imatge) {
+    public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida) {
         if ($contrasenya == $contrasenyarepetida) {
             $usuariDAO = new UsuarioDAO();
-            $usuariDAO->insertaUsuari($nom, $usuari, $contrasenya);
 
-            session_start();
-            $_SESSION['id'] = 0;
+            //Si l'usuari ja existeix no creara la conta
+            if ($usuariDAO->getUsuario($usuari) == null) {
 
-            $admin = new adminController();
-            $admin->registrarAccio("CreateUser:$usuari");
+                $usuariDAO->insertaUsuari($nom, $usuari, $contrasenya);
+                session_start();
+                $_SESSION['id'] = 0;
 
-            session_destroy();
+                $admin = new adminController();
+                $admin->registrarAccio("CreateUser:$usuari");
+                session_destroy();
+
+                header("Location: iniciaSessio");
+            } else {
+                echo "<div class='alert alert-danger'><h2>Aquest usuari ja existeix :(</h2></div>";
+            }
         } else {
-            echo "Les Claus no coinsideixen :(";
+            echo "<div class='alert alert-danger'><h2>Les Claus no coinsideixen :(</h2></div>";
         }
     }
 }

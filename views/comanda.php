@@ -23,24 +23,24 @@
             <div class="col">
                 <label>Localitat:</label>
                 <br>
-                <input name="localitat" type="text">
+                <input name="localitat" type="text" required>
                 <br><br>
                 <label>Codi Postal:</label>
                 <br>
-                <input name="codipostal" type="text">
+                <input name="codipostal" type="number" required>
                 <br><br>
                 <label>Carrer i Número:</label>
                 <br>
-                <input name="carrernumero" type="text">
+                <input name="carrernumero" type="text" required>
             </div>
             <div class="col">
                 <label>Nom i Cognom:</label>
                 <br>
-                <input name="nomclient" type="text">
+                <input name="nomclient" type="text" required>
                 <br><br>
                 <label>Numero de Telèfon:</label>
                 <br>
-                <input name="telefon" type="tlf">
+                <input name="telefon" type="tel" maxlength="9" required>
                 <br><br>
                 <label>Codi de Descompte:</label>
                 <br>
