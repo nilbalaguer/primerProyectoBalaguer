@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     if (isset($_GET['categoria'])) {
         header("Location: ".url."producto/lacarta?categoria=".$_GET['categoria']);
     } else {
-        header("Location: ".url."producto/lacarta");
+        header("Location: ".url."producto/lacarta?categoria");
     }
 } elseif (isset($_GET['eliminar'])) {
     $controllercarta->eliminarProducte($_GET['eliminar']);
@@ -33,11 +33,11 @@ if (isset($_GET['categoria'])) {
             <h2 class="heading2">LA CARTA</h2>
         </div>
         <div id="filtroslinks" class="d-flex justify-content-around mb-4">
-            <a class="mx-2" href="lacarta?categoria=pollo">POLLASTRE</a>
-            <a class="mx-2" href="lacarta?categoria=hamburgesa">HAMBURGESES</a>
-            <a class="mx-2" href="lacarta">TOT</a>
-            <a class="mx-2" href="lacarta?categoria=complements">COMPLEMENTS</a>
-            <a class="mx-2" href="lacarta?categoria=vedella">VEDELLA</a>
+            <a class="mx-2 <?=($_GET['categoria'] != "pollo") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=pollo">POLLASTRE</a>
+            <a class="mx-2 <?=($_GET['categoria'] != "hamburgesa") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=hamburgesa">HAMBURGESES</a>
+            <a class="mx-2 <?=($_GET['categoria'] == "") ? "botonfiltrocomandaselect" : "botonfiltrocomanda";?>" href="lacarta?categoria">TOT</a>
+            <a class="mx-2 <?=($_GET['categoria'] != "complements") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=complements">COMPLEMENTS</a>
+            <a class="mx-2 <?=($_GET['categoria'] != "vedella") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=vedella">VEDELLA</a>
         </div>
         <!--Finestra que es pot moure i mostra els productes afegits al carro-->
         <?php if (isset($_COOKIE['carro'])) {?>
@@ -108,8 +108,8 @@ if (isset($_GET['categoria'])) {
                                     <?php if (isset($_GET['categoria'])) {
                                         echo '<input hidden name="categoria" value="'.$_GET['categoria'].'">';
                                     }?>
-                                    <label for="submit<?=$productes[$temporalId]->getId()?>"><img src='/img/plus.webp' alt='+'></label>
-                                    <input hidden id="submit<?=$productes[$temporalId]->getId()?>" class="plusimage" type="submit" value="+" alt="Afegir">
+                                    <label for="submit<?=$productes[$temporalId]->getId()?>"><img class="plusimage" src='/img/plus.webp' alt='+'></label>
+                                    <input hidden id="submit<?=$productes[$temporalId]->getId()?>" type="submit" value="+" alt="Afegir">
                                 </form>
                             </div>
                         </div>

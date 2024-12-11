@@ -20,11 +20,28 @@
     width: 100%;
 }
 
-#filtroslinks a {
+.botonfiltrocomanda {
+    transition: 200ms;
     font-weight: 600;
     font-size: 130%;
     text-decoration: none;
     color: #ffffff;
+    padding: 5px;
+}
+
+.botonfiltrocomanda:hover {
+    transition: 200ms;
+    color: black;
+    background-color: white;
+}
+
+.botonfiltrocomandaselect {
+    font-weight: 600;
+    font-size: 130%;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    background-color: white;
 }
 
 #lacartatitle {
@@ -40,6 +57,7 @@
 #divProductos h3 {
     text-align: center;
     font-weight: 100;
+    
 }
 
 #divProductos p {
@@ -76,4 +94,16 @@
 
 #botonventanitacomanda {
     margin-bottom: 20px;
+}
+
+.plusimage {
+    transition: 300ms;
+}
+
+.plusimage:hover {
+    transition: 300ms;
+    transform: rotateZ(180deg);
+    filter: invert();
+    cursor: pointer;
+    
 }

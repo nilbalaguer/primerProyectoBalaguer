@@ -2,11 +2,11 @@
     <div id="firstdivfooter">
         <h2>Seguir a FoodCraft</h2>
         <div>
-            <a>Youtu</a>
-            <a>Insta</a>
-            <a>FaceB</a>
-            <a>Twitt</a>
-            <a>Reddi</a>
+            <a href="https://www.youtube.com/nil48f"><img class="footerxarxeslinks" src="../img/xarxes/youtube.svg" alt="enllaç youtube"></a>
+            <a><img class="footerxarxeslinks" src="../img/xarxes/instagram.svg" alt="enllaç instagram"></a>
+            <a><img class="footerxarxeslinks" src="../img/xarxes/facebook.svg" alt="enllaç facebook"></a>
+            <a><img class="footerxarxeslinks" src="../img/xarxes/twitter.svg" alt="enllaç twitter"></a>
+            <a><img class="footerxarxeslinks" src="../img/xarxes/reddit.svg" alt="enllaç reddit"></a>
         </div>
     </div>
     <div id="seconddivfooter">

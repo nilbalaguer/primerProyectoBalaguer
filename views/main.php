@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="/css/stylemenufooter.css">
     <link rel="stylesheet" href="/css/styledefaults.css">
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/comanda.css">
     <link rel="stylesheet" href="/css/carta.css">
     <link rel="stylesheet" href="/css/perfil.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/comanda.css">
     <title>FOODCRAFT</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
         </div>
         <div id="centrallinks">
             <a href="<?=url?>producto/home">INICI</a>
-            <a href="<?=url?>producto/lacarta">LA CARTA</a>
+            <a href="<?=url?>producto/lacarta?categoria">LA CARTA</a>
             <a class="d-none d-xl-block" href="<?=url?>producto/comanda">COMANDA</a>
         </div>
         <div id="divlinkclient">

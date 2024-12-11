@@ -38,7 +38,7 @@
     <div class="row mt-4">
         <div class="col"></div>
         <div class="col text-center">
-            <a href="<?=url?>producto/lacarta" class="greenbutton">DEMANA ARA!</a>
+            <a href="<?=url?>producto/lacarta?categoria" class="greenbutton">DEMANA ARA!</a>
         </div>
         <div class="col text-center">
             <button class="buttondiscount">15%!</button>
@@ -80,7 +80,7 @@
     <div class="row mt-4">
         <div class="col"></div>
         <div class="col">
-            <a href="<?=url?>producto/lacarta" class="greenbutton">DEMANA ARA!</a>
+            <a href="<?=url?>producto/lacarta?categoria" class="greenbutton">DEMANA ARA!</a>
         </div>
         <div class="col text-center">
             <img src="/img/coin.webp" class="img-fluid" alt="Moneda">

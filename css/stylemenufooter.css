@@ -29,6 +29,10 @@ header a {
     gap: 5rem;
 }
 
+#centrallinks a:hover {
+    color: var(--mc-vanilla-green-4);
+}
+
 #divlinkclient {
     width: 380px;
     text-align: center;
@@ -117,4 +121,10 @@ header a {
 .footerfoodimage {
     max-width: 158px;
     width: 100%;
+}
+
+.footerxarxeslinks {
+    width: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
