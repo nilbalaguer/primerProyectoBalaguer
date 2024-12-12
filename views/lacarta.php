@@ -33,9 +33,9 @@ if (isset($_GET['categoria'])) {
             <h2 class="heading2">LA CARTA</h2>
         </div>
         <div id="filtroslinks" class="d-flex justify-content-around mb-4">
+            <a class="mx-2 <?=($_GET['categoria'] == "") ? "botonfiltrocomandaselect" : "botonfiltrocomanda";?>" href="lacarta?categoria">TOT</a>
             <a class="mx-2 <?=($_GET['categoria'] != "pollo") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=pollo">POLLASTRE</a>
             <a class="mx-2 <?=($_GET['categoria'] != "hamburgesa") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=hamburgesa">HAMBURGESES</a>
-            <a class="mx-2 <?=($_GET['categoria'] == "") ? "botonfiltrocomandaselect" : "botonfiltrocomanda";?>" href="lacarta?categoria">TOT</a>
             <a class="mx-2 <?=($_GET['categoria'] != "complements") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=complements">COMPLEMENTS</a>
             <a class="mx-2 <?=($_GET['categoria'] != "vedella") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=vedella">VEDELLA</a>
         </div>
