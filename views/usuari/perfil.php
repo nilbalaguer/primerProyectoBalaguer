@@ -1,5 +1,9 @@
 <?php
 require_once "public/utils/protection.php";
+
+if ($_SESSION['admin'] == 1) {
+    header("Location: ".url."admin/panelAdmin");
+}
 ?>
 
 <div id="gridprofile">
@@ -8,10 +12,18 @@ require_once "public/utils/protection.php";
         <br>
         <h2 id="nomperfil"><?=$_SESSION['usuari'];?></h2>
         <br>
-        <?=$_SESSION['nom'];?>
-        <br>
-        <br>
-        <?=$_SESSION['id'];?>
+        <div id="datosusuario">
+            <h4>Nom Complet:</h4>
+            <p><?=$_SESSION['nom'];?></p>
+            <h4>Telefon:</h4>
+            <p><?=$_SESSION['telefon'];?></p>
+            <h4>CodiPostal:</h4>
+            <p><?=$_SESSION['codipostal'];?></p>
+            <h4>Localitat:</h4>
+            <p><?=$_SESSION['localitat'];?></p>
+            <h4>Direccio:</h4>
+            <p><?=$_SESSION['carrer'];?></p>
+        </div>
         <br>
     </div>
 

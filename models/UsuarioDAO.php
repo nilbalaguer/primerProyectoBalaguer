@@ -31,13 +31,13 @@ class UsuarioDAO {
     }
 
     //Registra un usuari en la base de dades i encripta la clau
-    public static function insertaUsuari($nombre, $usuario, $contrasenya) {
+    public static function insertaUsuari($nombre, $usuario, $contrasenya, $codipostal, $telefon, $localitat, $carrer) {
         try {
             $clau = password_hash($contrasenya, PASSWORD_DEFAULT);
 
             $con = DataBase::connect();
-            $stmt = $con->prepare("INSERT INTO clientes (nombre, usuario, contrasenya) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $nombre, $usuario, $clau);
+            $stmt = $con->prepare("INSERT INTO clientes (nombre, usuario, contrasenya, codigopostal, telefono, localidad, calle) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssddss", $nombre, $usuario, $clau, $codipostal, $telefon, $localitat, $carrer);
             
             if (!$stmt->execute()) {
                 echo "Error";

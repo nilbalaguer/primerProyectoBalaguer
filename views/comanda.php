@@ -23,24 +23,24 @@
             <div class="col">
                 <label>Localitat:</label>
                 <br>
-                <input name="localitat" type="text" required>
+                <input name="localitat" type="text" required value="<?=$_SESSION['localitat']?>">
                 <br><br>
                 <label>Codi Postal:</label>
                 <br>
-                <input name="codipostal" type="number" required>
+                <input name="codipostal" type="number" required value="<?=$_SESSION['codipostal']?>">
                 <br><br>
                 <label>Carrer i Número:</label>
                 <br>
-                <input name="carrernumero" type="text" required>
+                <input name="carrernumero" type="text" required value="<?=$_SESSION['carrer']?>">
             </div>
             <div class="col">
                 <label>Nom i Cognom:</label>
                 <br>
-                <input name="nomclient" type="text" required>
+                <input name="nomclient" type="text" required value="<?=$_SESSION['nom']?>">
                 <br><br>
                 <label>Numero de Telèfon:</label>
                 <br>
-                <input name="telefon" type="tel" maxlength="9" required>
+                <input name="telefon" type="tel" maxlength="9" required value="<?=$_SESSION['telefon']?>">
                 <br><br>
                 <label>Codi de Descompte:</label>
                 <br>

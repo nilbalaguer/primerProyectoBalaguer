@@ -3,7 +3,7 @@
 
     if (isset($_POST['usuario'])) {
         $session = new usuarioController();
-        $session->createUser($_POST['usuario'], $_POST['nombre'], $_POST['contrasenya'], $_POST['contrasenyarepetida']);
+        $session->createUser($_POST['usuario'], $_POST['nombre'], $_POST['contrasenya'], $_POST['contrasenyarepetida'], $_POST['codipostal'], $_POST['telefon'], $_POST['localitat'], $_POST['carrer']);
     }
 ?>
 
@@ -31,6 +31,22 @@
             <label>Repeteix la clau:</label>
             <br>
             <input type="password" name="contrasenyarepetida" required>
+            <br><br>
+            <label>Codi Postal:</label>
+            <br>
+            <input type="number" name="codipostal" required>
+            <br><br>
+            <label>Telefon:</label>
+            <br>
+            <input maxlength="9" name="telefon" required>
+            <br><br>
+            <label>Localitat:</label>
+            <br>
+            <input name="localitat" required>
+            <br><br>
+            <label>Carrer:</label>
+            <br>
+            <input name="carrer" required>
             <br><br>
             <input class="greenbutton" type="submit" value="Registrarse">
         </form>

@@ -2,7 +2,7 @@
     <div id="firstdivfooter">
         <h2>Seguir a FoodCraft</h2>
         <div>
-            <a href="https://www.youtube.com/nil48f"><img class="footerxarxeslinks" src="../img/xarxes/youtube.svg" alt="enllaç youtube"></a>
+            <a href="https://www.youtube.com/@nil48f" target="_blank"><img class="footerxarxeslinks" src="../img/xarxes/youtube.svg" alt="enllaç youtube"></a>
             <a><img class="footerxarxeslinks" src="../img/xarxes/instagram.svg" alt="enllaç instagram"></a>
             <a><img class="footerxarxeslinks" src="../img/xarxes/facebook.svg" alt="enllaç facebook"></a>
             <a><img class="footerxarxeslinks" src="../img/xarxes/twitter.svg" alt="enllaç twitter"></a>

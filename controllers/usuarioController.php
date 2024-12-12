@@ -48,6 +48,11 @@ class usuarioController
             $_SESSION['id'] = $resultado['id'];
             $_SESSION['usuari'] = $resultado['usuario'];
             $_SESSION['nom'] = $resultado['nombre'];
+            $_SESSION['codipostal'] = $resultado['codigopostal'];
+            $_SESSION['telefon'] = $resultado['telefono'];
+            $_SESSION['localitat'] = $resultado['localidad'];
+            $_SESSION['carrer'] = $resultado['calle'];
+            $_SESSION['admin'] = $resultado['administrador'];
 
             $admin = new adminController();
             $admin->registrarAccio("StartSession");
@@ -59,14 +64,14 @@ class usuarioController
     }
 
     //Registra a un usuari
-    public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida) {
+    public function createUser($usuari, $nom, $contrasenya, $contrasenyarepetida, $codipostal, $telefon, $localitat, $carrer) {
         if ($contrasenya == $contrasenyarepetida) {
             $usuariDAO = new UsuarioDAO();
 
             //Si l'usuari ja existeix no creara la conta
             if ($usuariDAO->getUsuario($usuari) == null) {
 
-                $usuariDAO->insertaUsuari($nom, $usuari, $contrasenya);
+                $usuariDAO->insertaUsuari($nom, $usuari, $contrasenya, $codipostal, $telefon, $localitat, $carrer);
                 session_start();
                 $_SESSION['id'] = 0;
 

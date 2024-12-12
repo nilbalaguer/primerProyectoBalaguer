@@ -135,3 +135,11 @@
 .divprecioperfil {
     background-color: var(--logingray);
 }
+
+#datosusuario h4{
+    font-size: 150%;
+}
+
+#datosusuario * {
+    color: black;
+}
