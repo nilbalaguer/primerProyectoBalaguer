@@ -58,7 +58,7 @@
                 ?>
             </div>
         </div>
-        <div class="text-center">
+        <div class="text-end">
             <input class="greenbutton" type="submit" value="FINALITZA LA COMPRA">
         </div>
     </form>

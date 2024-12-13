@@ -19,12 +19,12 @@
             <img id="logoimageheader" class="d-none d-lg-block" src="/img/FoodCraft.webp" alt="Logo FOODCRAFT">
             <img id="logoimageheader" class="d-lg-none" src="/img/favicon.ico" alt="Logo Foodcraft">
         </div>
-        <div id="centrallinks">
+        <div class="d-none d-lg-block" id="centrallinks">
             <a href="<?=url?>producto/home">INICI</a>
             <a href="<?=url?>producto/lacarta?categoria">LA CARTA</a>
-            <a class="d-none d-xl-block" href="<?=url?>producto/comanda">COMANDA</a>
+            <a href="<?=url?>producto/comanda">COMANDA</a>
         </div>
-        <div id="divlinkclient">
+        <div id="divlinkclient" class="d-none d-lg-block">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 CLIENT
             </button>
@@ -40,7 +40,24 @@
                 <li><a class="dropdown-item" href="<?=url?>usuario/perfil">Perfil de usuari</a></li>
             </ul>
         </div>
-        
+        <div id="divlinkclient" class="d-lg-none">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                MENU
+            </button>
+            <ul class="dropdown-menu">
+                <?php
+                if (isset($_SESSION['usuari'])) {
+                    echo "<li><h2 class='heading2 dropdown-item'>".$_SESSION['usuari']."</h2></li>";
+                }
+                ?>
+                <li><a class="dropdown-item" href="<?=url?>producto/home">Inici</a></li>
+                <li><a class="dropdown-item" href="<?=url?>producto/lacarta?categoria">La Carta</a></li>
+                <li><a class="dropdown-item" href="<?=url?>producto/comanda">Comanda</a></li>
+                <li><a class="dropdown-item" href="<?=url?>usuario/iniciaSessio">Inicia Sessio</a></li>
+                <li><a class="dropdown-item" href="<?=url?>usuario/tancaSessio">Tanca Sessio</a></li>
+                <li><a class="dropdown-item" href="<?=url?>usuario/perfil">Perfil de usuari</a></li>
+            </ul>
+        </div>
     </header>
 
     <?php

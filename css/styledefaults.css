@@ -33,6 +33,7 @@ h2 {
 
 body {
     overflow-x: hidden;
+    background-color: var(--background31);
 }
 
 .buttondiscount {

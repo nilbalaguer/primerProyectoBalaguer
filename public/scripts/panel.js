@@ -120,7 +120,7 @@ async function mostrarComandas(filtro) {
     divContenido.appendChild(botoncargar)
 
     try {
-        fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_W1nZUy0xPrQvvJ5OHbIq1IuaLvgdczZq1CmHv5n5&currencies=AUD%2CBGN%2CBRL%2CCAD%2CCHF%2CCNY%2CCZK%2CDKK%2CEUR%2CGBP%2CHKD%2CHRK%2CHUF%2CIDR%2CILS%2CINR%2CISK%2CJPY%2CKRW%2CMXN%2CMYR%2CNOK%2CNZD%2CPHP%2CPLN%2CRON%2CRUB%2CSEK%2CSGD%2CTHB%2CTRY%2CUSD%2CZAR&base_currency=EUR`)
+        fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_W1nZUy0xPrQvvJ5OHbIq1IuaLvgdczZq1CmHv5n5&currencies=EUR%2CBGN%2CBRL%2CCAD%2CCHF%2CCNY%2CCZK%2CDKK%2CAUD%2CGBP%2CHKD%2CHRK%2CHUF%2CIDR%2CILS%2CINR%2CISK%2CJPY%2CKRW%2CMXN%2CMYR%2CNOK%2CNZD%2CPHP%2CPLN%2CRON%2CRUB%2CSEK%2CSGD%2CTHB%2CTRY%2CUSD%2CZAR`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error en la solicitud");

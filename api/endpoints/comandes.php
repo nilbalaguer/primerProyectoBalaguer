@@ -52,13 +52,14 @@ class Comandes {
     function eliminar($id) {
         try {
             $con = DataBase::connect();
-            //Borrar comanda
-            $stmt = $con->prepare("DELETE FROM pedidos WHERE id_pedido = ?");
-            $stmt-> bind_param("d", $id);
-            $stmt-> execute();
-            
+
             //Borrar productes de comanda
             $stmt = $con->prepare("DELETE FROM productos_pedidos WHERE id_pedido = ?");
+            $stmt-> bind_param("d", $id);
+            $stmt-> execute();
+
+            //Borrar comanda
+            $stmt = $con->prepare("DELETE FROM pedidos WHERE id_pedido = ?");
             $stmt-> bind_param("d", $id);
             $stmt-> execute();
     

@@ -136,8 +136,13 @@
     background-color: var(--logingray);
 }
 
-#datosusuario h4{
-    font-size: 150%;
+#datosusuario label{
+    font-size: 100%;
+}
+
+#datosusuario input{
+    width: 80%;
+    padding: 6px;
 }
 
 #datosusuario * {

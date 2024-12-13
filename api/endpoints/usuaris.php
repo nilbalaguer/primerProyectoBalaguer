@@ -56,7 +56,7 @@ class Usuari {
     
             return json_encode("Usuari Eliminat");
         } catch (\Throwable $th) {
-            return json_encode("Error BBDD");
+            return json_encode("Error BBDD : Borra abans les Comandes del Usuari");
         }
     }
     

@@ -17,16 +17,18 @@ header a {
 }
 
 #logoimageheader {
-    max-width: 380px;
-    max-height: 60px;
+    max-width: 300px;
     width: 100%;
 }
 
 #centrallinks {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 5rem;
+    margin-top: 1rem;
+    margin-left: 7rem;
+}
+
+#centrallinks a {
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 #centrallinks a:hover {

@@ -12,18 +12,23 @@ if ($_SESSION['admin'] == 1) {
         <br>
         <h2 id="nomperfil"><?=$_SESSION['usuari'];?></h2>
         <br>
-        <div id="datosusuario">
-            <h4>Nom Complet:</h4>
-            <p><?=$_SESSION['nom'];?></p>
-            <h4>Telefon:</h4>
-            <p><?=$_SESSION['telefon'];?></p>
-            <h4>CodiPostal:</h4>
-            <p><?=$_SESSION['codipostal'];?></p>
-            <h4>Localitat:</h4>
-            <p><?=$_SESSION['localitat'];?></p>
-            <h4>Direccio:</h4>
-            <p><?=$_SESSION['carrer'];?></p>
-        </div>
+        <form id="datosusuario">
+            <label>Nom Complet:</label>
+            <input value="<?=$_SESSION['nom'];?>">
+            <br><br>
+            <label>Telefon:</label>
+            <input value="<?=$_SESSION['telefon'];?>">
+            <br><br>
+            <label>Codi Postal::</label>
+            <input value="<?=$_SESSION['codipostal'];?>">
+            <br><br>
+            <label>Localitat:</label>
+            <input value="<?=$_SESSION['localitat'];?>">
+            <br><br>
+            <label>Direccio:</label>
+            <input value="<?=$_SESSION['carrer'];?>">
+            <br>
+        </form>
         <br>
     </div>
 
