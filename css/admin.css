@@ -39,3 +39,16 @@
 #tituloadmin {
     color: white;
 }
+
+#adminfondo button {
+    transition: 300ms;
+    border: none;
+    background: none;
+    text-decoration: underline;
+}
+
+#adminfondo button:hover {
+    transition: 300ms;
+    color: green;
+    text-decoration: orangered;
+}

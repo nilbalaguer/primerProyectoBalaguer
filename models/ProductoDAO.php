@@ -5,7 +5,7 @@ include_once("models/Comestible.php");
 
 class ProductoDAO{
     //Obte tots els productes aplicant o no categoria
-    public static function getAll($categoria, $order = "id") {
+    public static function getAll($categoria, $order = "nombre") {
         try {
             $con = DataBase::connect();
             
@@ -26,6 +26,8 @@ class ProductoDAO{
                 $productos[] = $producto;
             }
     
+            shuffle($productos);
+
             $con->close();
             return $productos;
         } catch (\Throwable $th) {

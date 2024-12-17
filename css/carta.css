@@ -20,6 +20,10 @@
     width: 100%;
 }
 
+#filtroslinks a {
+    font-size: 90%;
+}
+
 .botonfiltrocomanda {
     transition: 200ms;
     font-weight: 600;
@@ -52,7 +56,16 @@
 .cartaimages {
     width: 358px;
     height: 282px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.cartaimages img {
+    width: 358px;
+}
+
 
 #divProductos h3 {
     text-align: center;

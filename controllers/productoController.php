@@ -10,6 +10,13 @@ class productoController{
         include_once("views/index.php");
     }
 
+    public function veureUnProducte($id) {
+        $producto = new ProductoDAO();
+        $info = $producto->getProductoById($id);
+
+        return $info;
+    }
+
     //Retorna les comandes fetes per el client
     public function verPedidosCliente() {
         $producto = new ProductoDAO();
@@ -156,5 +163,9 @@ class productoController{
     //Dirigeix a la pagina de comanda
     public function comanda() {
         include_once("views/comanda.php");
+    }
+
+    public function infoproducte() {
+        include_once("views/productos/infoproducte.php");
     }
 }

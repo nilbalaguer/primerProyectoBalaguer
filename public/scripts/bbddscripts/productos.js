@@ -8,18 +8,19 @@ class Producto {
         this.categoria = categoria;
     }
 
-    mostrarProducto() {
-        const parrafo = document.createElement("p");
-        parrafo.className = "recuadreComandaAdmin";
-        parrafo.textContent = `ID: ${this.id} Nom: ${this.nom} Descripcio: ${this.descripcio} Preu: ${this.preu} Imatge: ${this.imatge} Categoria: ${this.categoria}`;
-
+    mostrarProducto(clau) {
         const borrarlink = document.createElement("button");
         borrarlink.id = `borrarProducte${this.id}`;
         borrarlink.textContent = "Eliminar Producte";
-        borrarlink.addEventListener("click", () => { this.eliminarProducto(this.id); });
-        
+        borrarlink.addEventListener("click", () => {eliminarProducte(this.id, clau); });
+
+        const parrafo = document.createElement("tr");
+        parrafo.className = "tablahistorial";
+        parrafo.innerHTML = `<th>${this.id}</th><td>${this.nom}</td><td>${this.descripcio}</td><td>${this.preu}</td><td>${this.imatge}</td><td>${this.categoria}</td>`;
+
         parrafo.appendChild(borrarlink);
-        divContenido.appendChild(parrafo);
+
+        return parrafo;
     }
 }
 
@@ -44,6 +45,7 @@ async function mostrarProducte(filtro, clau) {
     inputpreu.placeholder = "preu";
 
     const inputimatge = document.createElement("input");
+    inputimatge.type="file";
     inputimatge.placeholder = "imatge";
 
     const inputcategoria = document.createElement("input");
@@ -76,6 +78,12 @@ async function mostrarProducte(filtro, clau) {
     .then(data => {
         iconoCargaAdmin.style.display = "none";
         try {
+            const tabla = document.createElement("table");
+            titul = document.createElement("tr");
+            titul.innerHTML = "<th>Id</th><td>Nom</td><td>Descripcio</td><td>Preu</td><td>Imatge</td><td>Categoria</td><td>Borrar</td>";
+            titul.className = "tablahistorial"
+            tabla.appendChild(titul);
+
             data.data.forEach(item => {
                 const producto = new Producto(
                     item.id,
@@ -86,8 +94,10 @@ async function mostrarProducte(filtro, clau) {
                     item.categoria
                 );
             
-                producto.mostrarProducto();
+                tabla.appendChild(producto.mostrarProducto(clau));
             });
+
+            divContenido.appendChild(tabla);
         } catch (error) {
             const parrafo = document.createElement("h2");
             parrafo.textContent = "Error Clau Incorrecta";
@@ -135,6 +145,16 @@ async function eliminarProducte(id, clau) {
 async function crearProducte(nom, descripcio, preu, imatge, categoria, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
+
+    console.log(imatge);
+
+    imatge = imatge.split("\\").pop();
+
+    console.log(imatge);
+
+    imatge = imatge.split(".")[0];
+
+    console.log(imatge);
 
     fetch(`/api/api.php?crearProducte&clau=${clau}&nom=${nom}&descripcio=${descripcio}&preu=${preu}&imatge=${imatge}&categoria=${categoria}`, { method: "GET" })
     .then(response => {
