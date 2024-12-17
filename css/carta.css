@@ -120,3 +120,16 @@
     cursor: pointer;
     
 }
+
+.imgintolerant {
+    width: 50px;
+    background-color: var(--mc-vanilla-green-4);
+    border-radius: 100px;
+    margin: 5px;
+}
+
+#infoproductes {
+    max-width: 436px;
+    background-color: var(--background1);
+    padding: 40px;
+}

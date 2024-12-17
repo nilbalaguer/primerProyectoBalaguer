@@ -10,6 +10,24 @@ class productoController{
         include_once("views/index.php");
     }
 
+    public function comprovarIntolerancies($descripcion) {
+        $intolerancias = "";
+
+        if (strpos($descripcion, "lactosa") != false) {
+            $intolerancias .= "<img class='imgintolerant' src='/img/intolerancies/lactosa.webp'>";
+        } else {
+            $intolerancias .= "<img class='imgintolerant' src='/img/intolerancies/lactosano.webp'>";
+        }
+
+        if (strpos($descripcion, "gluten") != false) {
+            $intolerancias .= "<img class='imgintolerant' src='/img/intolerancies/gluten.webp'>";
+        } else {
+            $intolerancias .= "<img class='imgintolerant' src='/img/intolerancies/glutenno.webp'>";
+        }
+
+        return $intolerancias;
+    }
+
     public function veureUnProducte($id) {
         $producto = new ProductoDAO();
         $info = $producto->getProductoById($id);

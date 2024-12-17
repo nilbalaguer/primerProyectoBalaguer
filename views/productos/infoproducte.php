@@ -1,5 +1,5 @@
 <div id="cartaBackground">
-    <div id="carta">
+    <div id="infoproductes">
         <button class="smallgreenbutton" onclick="window.history.back();"><- La Carta</button>
         <br>
         <?php
@@ -13,5 +13,7 @@
         <br>
         <h2><?=$info->getNombre()?></h2>
         <p><?=$info->getDescripcion()?></p>
+        <br><br>
+        <?=$controller->comprovarIntolerancies($info->getDescripcion())?>
     </div>
 </div>
