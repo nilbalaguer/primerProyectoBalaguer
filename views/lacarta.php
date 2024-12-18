@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 } elseif (isset($_GET['eliminar'])) {
     $controllercarta->eliminarProducte($_GET['eliminar']);
 
-    header("Location: ".url."producto/lacarta");
+    header("Location: ".url."producto/lacarta?categoria");
 }
 
 $productes = [];
@@ -35,7 +35,7 @@ if (isset($_GET['categoria'])) {
         <div id="filtroslinks" class="d-flex justify-content-around mb-4">
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "begudes") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=begudes">BEGUDES</a>
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "pollo") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=pollo">POLLASTRE</a>
-            <a class="mx-2 <?=($_GET['categoria'] != "hamburgesa") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=hamburgesa">HAMBURGESES</a>
+            <a class="mx-2 <?=($_GET['categoria'] != "hamburgesa") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=hamburgesa">HAMBURGUESES</a>
             <a class="mx-2 <?=($_GET['categoria'] == "") ? "botonfiltrocomandaselect" : "botonfiltrocomanda";?>" href="lacarta?categoria">TOT</a>
             <a class="mx-2 <?=($_GET['categoria'] != "complements") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=complements">COMPLEMENTS</a>
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "vedella") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=vedella">VEDELLA</a>
@@ -100,7 +100,7 @@ if (isset($_GET['categoria'])) {
                         ?>
                         <div class="col marcoproducto">
                             <div class="cartaimages">
-                                <a href="infoproducte?prod=<?=$productes[$temporalId]->getId()?>"><img src="/img/burgers/<?=$productes[$temporalId]->getImagen()?>.webp" alt="hamburgesa"></a>
+                                <a href="infoproducte?prod=<?=$productes[$temporalId]->getId()?>"><img src="/img/burgers/<?=$productes[$temporalId]->getImagen()?>.webp" alt="Producte:<?=$productes[$temporalId]->getDescripcion()?>"></a>
                             </div>
                             <h3><?=$productes[$temporalId]->getNombre()?></h3>
                             <div class="d-flex justify-content-around">

@@ -84,6 +84,7 @@ class productoController{
     //Mostra els productes emagatzemats al carro
     public function veureCarro() {
         $data = json_decode($_COOKIE['carro'], true);
+
         $resultado = "<ol>";
 
         foreach ($data as $variable) {
@@ -120,7 +121,9 @@ class productoController{
             $cont++;
         }
 
-        if (isset($_COOKIE['carro'])) {
+        if (count($data) < 1) {
+            setcookie("carro", "", time() - 3600, "/");
+        } elseif (isset($_COOKIE['carro'])) {
             setcookie("carro", json_encode($data), time() + 1000, "/");
         }
     }

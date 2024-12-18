@@ -63,7 +63,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
             <img src="/img/burgers/bigcraft.webp" class="img-fluid" alt="Bigcraft">
-            <h3>Hamburgeses</h3>
+            <h3>Hamburgueses</h3>
             <p>De la millor qualitat i de casa</p>
         </div>
         <div class="col d-none d-md-block">

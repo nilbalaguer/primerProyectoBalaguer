@@ -105,6 +105,10 @@
     max-width: 382px;
 }
 
+.marcoproducto h3 {
+    margin-top: 30px;
+}
+
 #botonventanitacomanda {
     margin-bottom: 20px;
 }

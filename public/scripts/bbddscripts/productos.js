@@ -146,15 +146,8 @@ async function crearProducte(nom, descripcio, preu, imatge, categoria, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
 
-    console.log(imatge);
-
     imatge = imatge.split("\\").pop();
-
-    console.log(imatge);
-
     imatge = imatge.split(".")[0];
-
-    console.log(imatge);
 
     fetch(`/api/api.php?crearProducte&clau=${clau}&nom=${nom}&descripcio=${descripcio}&preu=${preu}&imatge=${imatge}&categoria=${categoria}`, { method: "GET" })
     .then(response => {
@@ -184,6 +177,9 @@ async function crearProducte(nom, descripcio, preu, imatge, categoria, clau) {
 async function modificarProducte(id, nom, descripcio, preu, imatge, categoria, clau) {
     iconoCargaAdmin.style.display = "block";
     divContenido.innerHTML = "";
+
+    imatge = imatge.split("\\").pop();
+    imatge = imatge.split(".")[0];
 
     fetch(`/api/api.php?modificarProducte&clau=${clau}&id=${id}&nom=${nom}&descripcio=${descripcio}&preu=${preu}&imatge=${imatge}&categoria=${categoria}`, { method: "GET" })
     .then(response => {

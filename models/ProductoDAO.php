@@ -5,16 +5,16 @@ include_once("models/Comestible.php");
 
 class ProductoDAO{
     //Obte tots els productes aplicant o no categoria
-    public static function getAll($categoria, $order = "nombre") {
+    public static function getAll($categoria, $order = "precio") {
         try {
             $con = DataBase::connect();
             
             if ($categoria !== null) {
-                $stmt = $con->prepare("SELECT * FROM productos WHERE categoria LIKE ? ORDER BY $order");
+                $stmt = $con->prepare("SELECT * FROM productos WHERE categoria LIKE ? ORDER BY $order DESC");
                 $categoria = "%" . $categoria . "%";
                 $stmt->bind_param("s", $categoria);
             } else {
-                $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order");
+                $stmt = $con->prepare("SELECT * FROM productos ORDER BY $order DESC");
             }
     
             $stmt->execute();
@@ -26,7 +26,7 @@ class ProductoDAO{
                 $productos[] = $producto;
             }
     
-            shuffle($productos);
+            //shuffle($productos);
 
             $con->close();
             return $productos;
@@ -34,24 +34,6 @@ class ProductoDAO{
             echo "<p style='font-size: 200%; font-weight: bold; color: red;'>Els nostres servidors no estan disponibles :(</p><p>Lamentem les molesties</p>";
             throw $th;
         }
-    }
-
-    //Borrar
-    public static function store($producto){
-        $con = DataBase::connect();
-        $stmt = $con->prepare("INSERT INTO camisas (nombre, talla, precio) VALUES (?,?,?);");
-        $stmt ->bind_param("ssd", $producto->getNombre(),$producto->getTalla(),$producto->getPrecio());
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $productos = [];
-
-        while($producto = $result->fetch_object("Camiseta")) {
-            $productos[] = $producto;
-        }
-
-        $con->close();
     }
 
     //Afegir la comanda a la taula pedidos i els producte d'aquesta a la taula productos_pedidos
@@ -93,10 +75,10 @@ class ProductoDAO{
 
                 $stmt->execute();
                 $result1 = $stmt->get_result();
-                $pedidos .= "<div class='divproductosdelperfil'>";
+                $pedidos .= "<div class='divproductosdelperfil row'>";
                 while ($row1 = $result1->fetch_assoc()) {
                     $producto = ProductoDAO::getProductoById($row1['id_producto']);
-                    $pedidos .= "<div class='productoenperfildiv'><img class='comandaimagesperfil' src='/img/burgers/".$producto[0]->getImagen().".webp' alt='imatge producte'><p>".$producto[0]->getNombre()."</p><p>".$producto[0]->getPrecio()."€</p></div>";
+                    $pedidos .= "<div class='productoenperfildiv col'><img class='comandaimagesperfil' src='/img/burgers/".$producto[0]->getImagen().".webp' alt='imatge producte'><p>".$producto[0]->getNombre()."</p><p>".$producto[0]->getPrecio()."€</p></div>";
                 }
 
                 $descompte = ProductoDAO::obtindreDescompte($row['id_descuento']);
@@ -173,5 +155,23 @@ class ProductoDAO{
         $stmt-> bind_param("i", $id);
         $stmt-> execute();
         $stmt-> close();
+    }
+
+    //Borrar
+    public static function store($producto){
+        $con = DataBase::connect();
+        $stmt = $con->prepare("INSERT INTO camisas (nombre, talla, precio) VALUES (?,?,?);");
+        $stmt ->bind_param("ssd", $producto->getNombre(),$producto->getTalla(),$producto->getPrecio());
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $productos = [];
+
+        while($producto = $result->fetch_object("Camiseta")) {
+            $productos[] = $producto;
+        }
+
+        $con->close();
     }
 }

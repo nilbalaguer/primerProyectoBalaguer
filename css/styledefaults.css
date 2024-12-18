@@ -34,6 +34,10 @@ h2 {
 body {
     overflow-x: hidden;
     background-color: var(--background31);
+    background-image: url('/img/lacarta/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .buttondiscount {
