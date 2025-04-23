@@ -44,7 +44,8 @@
             </div>
         </div>
         <div class="text-end">
-            <input class="greenbutton" type="submit" value="FINALITZA LA COMPRA">
+            <input class="greenbutton d-none d-lg-block" type="submit" value="FINALITZA LA COMPRA">
+            <input class="smallgreenbutton d-lg-none" type="submit" value="FINALITZA LA COMPRA">
         </div>
     </form>
 </div>

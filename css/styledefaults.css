@@ -83,6 +83,10 @@ body {
     background-color: var(--hovergreen);
 }
 
+.smallgreenbutton:hover {
+    background-color: var(--hovergreen);
+}
+
 .no-wrap {
     white-space: nowrap;
 }

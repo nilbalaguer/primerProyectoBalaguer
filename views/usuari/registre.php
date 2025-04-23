@@ -1,5 +1,5 @@
 <div id="fondoiniciasessio">
-    <div id="divbee2">
+    <div id="divbee2" class="d-none d-sm-none">
         <img src="/img/bee.gif">
     </div>
     <div id="formularioiniciasessio">
@@ -45,7 +45,7 @@
             <a href="/usuario/iniciaSessio">Ja tens conta? Inicia sessio!</a>
         </div>
     </div>
-    <div id="divbee">
+    <div id="divbee" class="d-none d-sm-none">
         <img src="/img/bee.gif">
     </div>
 </div>

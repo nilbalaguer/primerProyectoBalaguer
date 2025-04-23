@@ -8,7 +8,7 @@
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "pollo") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=pollo">POLLASTRE</a>
             <a class="mx-2 <?=($_GET['categoria'] != "hamburgesa") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=hamburgesa">HAMBURGUESES</a>
             <a class="mx-2 <?=($_GET['categoria'] == "") ? "botonfiltrocomandaselect" : "botonfiltrocomanda";?>" href="lacarta?categoria">TOT</a>
-            <a class="mx-2 <?=($_GET['categoria'] != "complements") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=complements">COMPLEMENTS</a>
+            <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "complements") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=complements">COMPLEMENTS</a>
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "vedella") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=vedella">VEDELLA</a>
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "postres") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=postres">POSTRES</a>
         </div>
