@@ -1,4 +1,32 @@
 #bannerimage {
+    width: 100vw;
+    height: 80vh;
+    background-image: url("/img/home/banner.jpeg");
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+    padding: 40px;
+}
+
+#motivation-message-banner {
+    background-color: var(--background2);
+    max-width: 70%;
+    min-width: 20%;
+    padding: 20px;
+    box-shadow: inset 0 5px 0 var(--background31);
+}
+
+#motivation-message-banner h2 {
+    font-size: 160%;
+}
+
+#motivation-message-banner a {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 

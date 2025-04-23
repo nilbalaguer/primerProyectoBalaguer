@@ -1,5 +1,13 @@
-<div>
-    <img id="bannerimage" src="/img/home/banner.jpeg">
+<div id="bannerimage">
+    <div id="motivation-message-banner">
+        <h2 class="heading2">Les Millors hamburgeses del mercat</h2>
+
+        <p>Coneix totes les noves variants d'aliments, meravellat dels sabors extraordinaris i meravellosos de les nostres hamburgueses, 
+            tasta les patates d'origen local directes de l'hort.
+        </p>
+    
+        <a href="<?=url?>producto/lacarta?categoria" class="smallgreenbutton no-wrap">FES UN TAST!</a>
+    </div>
 </div>
 
 <div id="divDescomptes">
