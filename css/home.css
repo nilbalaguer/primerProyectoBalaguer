@@ -39,6 +39,7 @@
     grid-template-columns: 33% auto 33%;
     grid-template-rows: 15% auto 15%;
     */
+    box-shadow: inset 0 5px 0 var(--background31);
 }
 
 #divDescomptes div img {

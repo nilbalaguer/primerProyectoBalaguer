@@ -8,13 +8,13 @@ abstract class Producto{
     protected $nombre;
     protected $imagen;
 
-    public function __construct($id, $nombre, $descripcion, $precio, $imagen) {
-        $this->id = $id;
-        $this->descripcion = $descripcion;
-        $this->precio = $precio;
-        $this->nombre = $nombre;
-        $this->imagen = $imagen;
-    }
+    // public function __construct($id, $nombre, $descripcion, $precio, $imagen) {
+    //     $this->id = $id;
+    //     $this->descripcion = $descripcion;
+    //     $this->precio = $precio;
+    //     $this->nombre = $nombre;
+    //     $this->imagen = $imagen;
+    // }
 
     public function setNombre($nombre){
         $this->nombre = $nombre;
