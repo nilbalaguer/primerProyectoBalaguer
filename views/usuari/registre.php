@@ -1,12 +1,3 @@
-<?php
-    include_once "controllers/usuarioController.php";
-
-    if (isset($_POST['usuario'])) {
-        $session = new usuarioController();
-        $session->createUser($_POST['usuario'], $_POST['nombre'], $_POST['contrasenya'], $_POST['contrasenyarepetida'], $_POST['codipostal'], $_POST['telefon'], $_POST['localitat'], $_POST['carrer']);
-    }
-?>
-
 <div id="fondoiniciasessio">
     <div id="divbee2">
         <img src="/img/bee.gif">

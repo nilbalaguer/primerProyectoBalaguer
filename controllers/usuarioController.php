@@ -11,16 +11,38 @@ class usuarioController
 
     //Dirigeix a la pagina de inici de sessio
     public function iniciaSessio() {
+        include_once "controllers/usuarioController.php";
+
+        if (isset($_POST['usuario'])) {
+            $session = new usuarioController();
+            $session->startSession($_POST['usuario'], $_POST['contrasenya']);
+        }
+
         include_once "views/usuari/iniciaSessio.php";
     }
 
     //Dirigeix a la pagina de registre
     public function registrarse() {
+        include_once "controllers/usuarioController.php";
+
+        if (isset($_POST['usuario'])) {
+            $session = new usuarioController();
+            $session->createUser($_POST['usuario'], $_POST['nombre'], $_POST['contrasenya'], $_POST['contrasenyarepetida'], $_POST['codipostal'], $_POST['telefon'], $_POST['localitat'], $_POST['carrer']);
+        }
+
         include_once "views/usuari/registre.php";
     }
 
     //Dirigeix a la pagina del perfil de usuari
     public function perfil() {
+        require_once "public/utils/protection.php";
+
+        if ($_SESSION['admin'] == 1) {
+            header("Location: ".url."admin/panelAdmin");
+        }
+
+        $perfilcontroller = new productoController();
+
         include_once "views/usuari/perfil.php";
     }
 

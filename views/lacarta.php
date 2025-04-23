@@ -1,32 +1,3 @@
-<?php 
-include_once "controllers/productoController.php";
-$controllercarta = new productoController();
-
-if (isset($_GET['id'])) {
-    $controllercarta->afegirProducte($_GET['id'], $_GET['preu'], $_GET['nom']);
-
-    if (isset($_GET['categoria'])) {
-        header("Location: ".url."producto/lacarta?categoria=".$_GET['categoria']);
-    } else {
-        header("Location: ".url."producto/lacarta?categoria");
-    }
-} elseif (isset($_GET['eliminar'])) {
-    $controllercarta->eliminarProducte($_GET['eliminar']);
-
-    header("Location: ".url."producto/lacarta?categoria");
-}
-
-$productes = [];
-
-if (isset($_GET['categoria'])) {
-    $productes = $controllercarta->mostrarProductes($_GET['categoria']);
-} else {
-    $productes = $controllercarta->mostrarProductes();
-}
-
-?>
-
-
 <div id="cartaBackground">
     <div class="container d-flex flex-column align-items-center" id="carta">
         <div id="lacartatitle" class="text-center mb-3">

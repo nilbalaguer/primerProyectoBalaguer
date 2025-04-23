@@ -176,17 +176,61 @@ class productoController{
         include_once("views/home.php");
     }
 
-    //Dirigeix a la pagina La Carta
+    //Dirigeix a la pagina La Carta i carrega la seva logica
     public function lacarta() {
+
+        include_once "controllers/productoController.php";
+
+        $controllercarta = new productoController();
+
+        if (isset($_GET['id'])) {
+            $controllercarta->afegirProducte($_GET['id'], $_GET['preu'], $_GET['nom']);
+
+            if (isset($_GET['categoria'])) {
+                header("Location: ".url."producto/lacarta?categoria=".$_GET['categoria']);
+            } else {
+                header("Location: ".url."producto/lacarta?categoria");
+            }
+        } elseif (isset($_GET['eliminar'])) {
+            $controllercarta->eliminarProducte($_GET['eliminar']);
+
+            header("Location: ".url."producto/lacarta?categoria");
+        }
+
+        $productes = [];
+
+        if (isset($_GET['categoria'])) {
+            $productes = $controllercarta->mostrarProductes($_GET['categoria']);
+        } else {
+            $productes = $controllercarta->mostrarProductes();
+        }
+
         include_once("views/lacarta.php");
     }
 
     //Dirigeix a la pagina de comanda
     public function comanda() {
+        include_once "controllers/productoController.php";
+        require_once "public/utils/protection.php";
+        $controllercomanda = new productoController();
+    
+        if (isset($_GET['eliminar'])) {
+            $controllercomanda->eliminarProducte($_GET['eliminar']);
+        
+            header("Location: ".url."producto/comanda");
+        }
+    
+        if (isset($_POST['nomclient'])) {
+            $controllercomanda->finalitzarCompra($_SESSION['id'], $_POST['localitat'], $_POST['codipostal'], $_POST['carrernumero'], $_POST['nomclient'], $_POST['telefon'], $controllercomanda->idCarro(), $_POST['codidescompte']);
+        }
+
         include_once("views/comanda.php");
     }
 
     public function infoproducte() {
+        $controller = new productoController();
+        $info = $controller->veureUnProducte($_GET['prod'])[0];
+
         include_once("views/productos/infoproducte.php");
     }
 }

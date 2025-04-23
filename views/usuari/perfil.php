@@ -1,11 +1,3 @@
-<?php
-require_once "public/utils/protection.php";
-
-if ($_SESSION['admin'] == 1) {
-    header("Location: ".url."admin/panelAdmin");
-}
-?>
-
 <div id="gridprofile">
     <div id="lateralperfil"  class="d-none d-lg-block">
         <img id="fotoperfil" src="<?=url?>img/users/user<?=random_int(1,8)?>.png" alt="Foto de perfil">
@@ -41,7 +33,6 @@ if ($_SESSION['admin'] == 1) {
         <h1 class="heading2">Les meves Comandes</h1>
         <div>
             <?php
-                $perfilcontroller = new productoController();
                 echo $perfilcontroller->verPedidosCliente();
 
             ?>
