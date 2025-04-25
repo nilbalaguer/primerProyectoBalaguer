@@ -87,6 +87,12 @@ body {
     background-color: var(--hovergreen);
 }
 
+.greenbutton:disabled, .smallgreenbutton:disabled {
+    background-color: var(--subtitulos);
+    box-shadow: none;
+    color: var(--logingray);
+}
+
 .no-wrap {
     white-space: nowrap;
 }

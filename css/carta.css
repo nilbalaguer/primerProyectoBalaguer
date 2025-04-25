@@ -137,3 +137,15 @@
     background-color: var(--background1);
     padding: 20px;
 }
+
+.botonfiltrocomandaDropDown {
+    border: none;
+    color: black !important;
+    background-color: white;
+    font-weight: 600;
+    font-size: 130%;
+}
+
+.dropdown-categorias a {
+    color: black !important;
+}

@@ -224,6 +224,8 @@ class productoController{
             $controllercomanda->finalitzarCompra($_SESSION['id'], $_POST['localitat'], $_POST['codipostal'], $_POST['carrernumero'], $_POST['nomclient'], $_POST['telefon'], $controllercomanda->idCarro(), $_POST['codidescompte']);
         }
 
+        $existe_carro = isset($_COOKIE['carro']);
+
         include_once("views/comanda.php");
     }
 

@@ -127,3 +127,35 @@
     margin: 10px 60px;
     padding: 30px;
 }
+
+/*Horaris movil*/
+#divHorarisMovil {
+    background-color: var(--background2);
+    text-align: center;
+    padding: 20px 10px 10px 20px;
+}
+
+#divHorarisMovil h2 {
+    text-align: left;
+}
+
+#divHorarisMovil p {
+    font-size: 150%;
+    text-align: left;
+}
+
+#divHorarisMovil h3 {
+    font-family: MinecraftTen, Helvetica;
+}
+
+#divHorarisMovil div div:nth-last-child(1) {
+    background-color: var(--backgroundMenu);
+    margin: 10px 60px;
+    padding: 30px;
+}
+
+#divHorarisMovil div div:nth-last-child(2) {
+    background-color: var(--backgroundMenu);
+    margin: 10px 60px;
+    padding: 30px;
+}

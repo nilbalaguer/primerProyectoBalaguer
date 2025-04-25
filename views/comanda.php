@@ -33,7 +33,7 @@
             </div>
             <div class="col" id="demanatbox">
                 <?php
-                    if (isset($_COOKIE['carro'])) {
+                    if ($existe_carro) {
                         echo $controllercomanda->veureCarro();
                         echo "<br><br>Total: ".$controllercomanda->preuFinal(). "<br><p>Amb IVA inclos</p>";
                     } else {
@@ -44,8 +44,8 @@
             </div>
         </div>
         <div class="text-end">
-            <input class="greenbutton d-none d-lg-block" type="submit" value="FINALITZA LA COMPRA">
-            <input class="smallgreenbutton d-lg-none" type="submit" value="FINALITZA LA COMPRA">
+            <input <?=($existe_carro == false) ? "disabled" : "";?> class="greenbutton d-none d-lg-block" type="submit" value="FINALITZA LA COMPRA">
+            <input <?=($existe_carro == false) ? "disabled" : "";?> class="smallgreenbutton d-lg-none" type="submit" value="FINALITZA LA COMPRA">
         </div>
     </form>
 </div>

@@ -10,7 +10,7 @@
         </div>
     </div>
     <div id="seconddivfooter">
-        <div class="footerfoodimage">
+        <div class="footerfoodimage d-none d-lg-block">
             <img class="footerfoodimage" src="/img/beansbucket.webp" alt="hamburgesa">
             <img class="footerfoodimage" src="/img/minecrafthamburger.webp" alt="beans">
         </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div>
-            <img id="cautionbestfoodimage" src="/img/cautionbestfood.webp" alt="Caution Best Food">
+            <img id="cautionbestfoodimage" class="d-none d-lg-block" src="/img/cautionbestfood.webp" alt="Caution Best Food">
         </div>
     </div>
     <div id="thirddivfooter">

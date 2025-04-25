@@ -3,7 +3,7 @@
         <div id="lacartatitle" class="text-center mb-3">
             <h2 class="heading2">LA CARTA</h2>
         </div>
-        <div id="filtroslinks" class="d-flex justify-content-around mb-4">
+        <div id="filtroslinks" class="d-none d-lg-flex d-flex justify-content-around mb-4">
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "begudes") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=begudes">BEGUDES</a>
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "pollo") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=pollo">POLLASTRE</a>
             <a class="mx-2 <?=($_GET['categoria'] != "hamburgesa") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=hamburgesa">HAMBURGUESES</a>
@@ -12,6 +12,22 @@
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "vedella") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=vedella">VEDELLA</a>
             <a class="mx-2 d-none d-lg-block <?=($_GET['categoria'] != "postres") ? "botonfiltrocomanda" : "botonfiltrocomandaselect";?>" href="lacarta?categoria=postres">POSTRES</a>
         </div>
+
+        <div id="filtroslinks" class="d-lg-none">
+            <button class="botonfiltrocomandaDropDown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                FILTRAR PER...
+            </button>
+            <ul class="dropdown-categorias dropdown-menu">
+                <li><a href="lacarta?categoria=begudes">BEGUDES</a></li>
+                <li><a href="lacarta?categoria=pollo">POLLASTRE</a></li>
+                <li><a href="lacarta?categoria=hamburgesa">HAMBURGUESES</a></li>
+                <li><a href="lacarta?categoria">TOT</a></li>
+                <li><a href="lacarta?categoria=complements">COMPLEMENTS</a></li>
+                <li><a href="lacarta?categoria=vedella">VEDELLA</a></li>
+                <li><a href="lacarta?categoria=postres">POSTRES</a></li>
+            </ul>
+        </div>
+
         <!--Finestra que es pot moure i mostra els productes afegits al carro-->
         <?php if (isset($_COOKIE['carro'])) {?>
         <div id="ventana">

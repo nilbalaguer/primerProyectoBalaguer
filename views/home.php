@@ -48,7 +48,7 @@
         <div class="col text-center">
             <a href="<?=url?>producto/lacarta?categoria" class="greenbutton no-wrap">DEMANA ARA!</a>
         </div>
-        <div class="col text-center">
+        <div class="col text-center d-none d-lg-block">
             <button class="buttondiscount">15%!</button>
         </div>
     </div>
@@ -90,13 +90,34 @@
         <div class="col">
             <a href="<?=url?>producto/lacarta?categoria" class="greenbutton no-wrap">DEMANA ARA!</a>
         </div>
-        <div class="col text-center">
+        <div class="col text-center d-none d-lg-block">
             <img src="/img/coin.webp" class="img-fluid" alt="Moneda">
         </div>
     </div>
 </div>
 
-<div id="divHoraris">
+<div id="divHoraris" class="d-none d-lg-block">
+    <div class="row">
+        <div class="col">
+            <h2 class="heading2">HORARIS</h2>
+            <p>El nostre restaurant ofereix els seus serveis a les millors hores posibles per oferir la millor experiencia</p>
+        </div>
+
+        <div class="col">
+            <h3>De Dilluns a Divendres</h3>
+            <h3>12:00 - 17:30</h3>
+            <h3>18:00 - 00:00</h3>
+        </div>
+
+        <div class="col">
+            <h3>De Disabtes a Diumenges</h3>
+            <h3>12:00 - 17:30</h3>
+            <h3>18:00 - 02:00</h3>
+        </div>
+    </div>
+</div>
+
+<div id="divHorarisMovil" class="d-lg-none">
     <div class="row">
         <div class="col">
             <h2 class="heading2">HORARIS</h2>
